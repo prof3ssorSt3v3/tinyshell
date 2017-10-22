@@ -4,7 +4,7 @@
  * https://github.com/prof3ssorSt3v3/TinyShell/
  * Released under MIT license
  * Limited Use scenario - this is intended to be used in mobile devices only
- * @version 0.0.2
+ * @version 0.0.4
  */
 
 (function (global, factory) {
@@ -28,75 +28,107 @@
             startY:0,
             moved:false,
             duration:0,
-            eventType:null,
-            maxTime: 200, 
-            minDistance:25
+            maxSwipeTime: 200, 
+            minDistance:25,
+            maxDistance:10
         };
         this.Events = {
             swipeleft: new CustomEvent('swipeleft', 
                                        {detail:{
                                            dir:'left', 
-                                           points:1
+                                           touches:1,
+                                           callback:null
                                        }}),
             swiperight: new CustomEvent('swiperight', 
                                        {detail:{
                                            dir:'right', 
-                                           points:1
+                                           touches:1,
+                                           callback:null
                                        }}),
             tap: new CustomEvent('tap', 
                                  {detail:{
-                                     points:1
+                                     touches:1,
+                                     callback:null
                                  }})
         };
     }
     
     t$.prototype.addEventListener = function(ev, callback){
+        //set the eventtype hold the name of the callback function
+        this.Events[ev].detail.callback = callback;
+            console.log('Added listener for', ev, 'to call', callback.name );
         this.Params.targets.forEach(addEvs.bind(this));
+        
         function addEvs(t){
-            t.addEventListener(ev, callback);
-            this.Params.eventType = ev;
-            t.addEventListener('touchstart', this.start.bind(this), {capture:true, passive:true});
-            t.addEventListener('touchend', this.end.bind(this), {capture:true, passive:true});
-            t.addEventListener('touchcancel', this.cancel.bind(this), {capture:true});
+            t.addEventListener(ev, this);
+            t.addEventListener('touchstart', this);
+            t.addEventListener('touchend', this);
+            t.addEventListener('touchcancel', this);
         }
     }
     
     t$.prototype.start = function (ev){
         let touches = ev.changedTouches;
-        if(touches.length == 1){
-            this.Params.startX = touches[0].pageX;
-            this.Params.startY = touches[0].pageY;
-            performance.mark('start'); 
-        }
+        this.Events['tap'].detail.touches = touches.length;
+        this.Events['swipeleft'].detail.touches = touches.length;
+        this.Events['swiperight'].detail.touches = touches.length;
+        this.Params.startX = touches[0].pageX;
+        this.Params.startY = touches[0].pageY;
+        performance.mark('start'); 
     }
     
     t$.prototype.end = function (ev){
-        let touches = ev.changedTouches;
+        let touches = ev.changedTouches;    
+        //Must be changedTouches as ev.touches.length would be zero
         if(touches.length == 1){
             performance.mark('end');
             performance.measure('touching','start','end');
             let m = performance.getEntriesByName('touching', 'measure');
             let duration = m[0].duration;
-            //performance.clearMeasures('touching');
-            //performance.clearMarks('start');
-            //performance.clearMarks('end');
-            let deltaX;
-            let deltaY = Math.abs(touches[0].pageY - this.Params.startY);
-            //TODO: Handle both eventTypes on the same object
-            //TODO: Handle the tap event
-            if(this.Params.eventType == 'swipeleft'){
-                deltaX = this.Params.startX - touches[0].pageX;
-            }else if(this.Params.eventType == 'swiperight'){
-                deltaX = touches[0].pageX - this.Params.startX;
-            }
-            if( deltaX > this.Params.minDistance && duration < this.Params.maxTime){
-                //Good swipe
-                console.log('Successful', this.Params.eventType);
-                //do callback
-                ev.currentTarget.dispatchEvent(this.Events[this.Params.eventType]);
+            let deltaX = Math.max(this.Params.startX, touches[0].pageX) - Math.min(this.Params.startX, touches[0].pageX);
+            let deltaY = Math.max(touches[0].pageY, this.Params.startY) - Math.min(touches[0].pageY, this.Params.startY);
+            let dir;
+            if( Math.max(this.Params.startX, touches[0].pageX) == this.Params.startX){
+                //start was to the right so this is a swipe left
+                dir = 'left';
             }else{
-                //invalid swipe
-                console.log('Invalid', this.Params.eventType);
+                dir = 'right'
+            }
+            //for swipeleft
+            if( dir == 'left' && this.Events['swipeleft'].detail.callback !== null &&
+              typeof this.Events['swipeleft'].detail.callback === 'function'){
+                if( deltaX > this.Params.minDistance && 
+                   duration < this.Params.maxSwipeTime && 
+                   deltaX > deltaY ){
+                    console.log('Successful swipeleft');//Good swipe
+                    //do callback to be handled by this.handleEvent
+                    ev.currentTarget.dispatchEvent(this.Events['swipeleft']);
+                }else{
+                    console.log('Invalid swipeleft'); //invalid swipe
+                }
+            }
+            //for swiperight
+            if( dir == 'right' && this.Events['swiperight'].detail.callback !== null &&
+              typeof this.Events['swiperight'].detail.callback === 'function'){
+                if( deltaX > this.Params.minDistance && 
+                   duration < this.Params.maxSwipeTime && 
+                   deltaX > deltaY ){
+                    console.log('Successful swiperight'); //Good swipe
+                    //do callback to be handled by this.handleEvent
+                    ev.currentTarget.dispatchEvent(this.Events['swiperight']);
+                }else{
+                    console.log('Invalid swiperight');  //invalid swipe
+                }
+            }
+            //for tap
+            if( this.Events['tap'].detail.callback !== null &&
+               typeof this.Events['tap'].detail.callback === 'function'){
+                if( deltaX < this.Params.maxDistance && 
+                  deltaY < this.Params.maxDistance){
+                    ev.currentTarget.dispatchEvent(this.Events['tap']);
+                }else{
+                    
+                }
             }
         }
     }
@@ -108,12 +140,38 @@
     
     t$.prototype.clear = function (ev, callback){
         console.log('clear');
+        //this.Params.eventType = null;
+        this.Events[ev].detail.callback = null;
         this.Params.targets.forEach(removeEvs.bind(this));
         function removeEvs(t){
             t.removeEventListener(ev, callback);
             t.removeEventListener('touchstart', this.start);
             t.removeEventListener('touchend', this.end);
             t.removeEventListener('touchcancel', this.cancel);
+        }
+    }
+    
+    t$.prototype.handleEvent = function(ev){
+        switch(ev.type){
+            case 'swipeleft':
+            case 'swiperight':
+            case 'tap':
+                //swipe or tap with one finger
+                if( ev.detail.touches == 1){
+                    this.Events[ev.type].detail.callback.call(this, ev);
+                }else{
+                    console.log('Wrong number of touch points', ev.detail.touches);
+                }
+                break;
+            case 'touchstart':
+                this.start(ev);
+                break;
+            case 'touchend':
+                this.end(ev);
+                break;
+            case 'touchcancel':
+                this.cancel(ev);
+                break;
         }
     }
     
