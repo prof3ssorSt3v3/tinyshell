@@ -11,4 +11,4 @@ $primary-color: #333333;
 $primary-two: lighten($primary-color, 30%);
 $primary-three: darken($primary-color, 30%);
 $secondary-color: #DDDDDD;
-$secondary-two: lighten($secondary-color);
+$secondary-two: lighten($secondary-color, 10%);
