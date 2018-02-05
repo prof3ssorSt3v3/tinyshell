@@ -1,12 +1,16 @@
 # tiny$hell
 HTML5 CSS and JS framework for Mobile Hybrid Apps
 
+This Framework is designed to work primarily with Cordova Hybrid Apps. The CSS and JavaScript are optimized to work with Chrome, as this is the engine used by Cordova.
+
 To use the TinyShell Script you need to first create an instance of the TinyShell object by calling the constructor method and passing in one or more HTML Elements as targets. Next you can call the addEventListener method once, on the TinyShell instance, for each desired event - swipeleft, swiperight, or tap.
+
+# JAVASCRIPT
 
 ## Methods
 **1. Constructor** 
 
-Call this to create a TinyShell manager object. Alternatively, you could call this in a loop and create a series of manager objects, each with one target.
+Call this to create a TinyShell manager object
 
 ```javascript
 let targets = document.querySelector('.cards');
@@ -74,3 +78,6 @@ t$.EventTypes.TAP
 If you see the message "Sorry. Your browser does not support TinyShell." it means that you are using a device that does not have touch support.
 
 If you are testing on a laptop or desktop browser, try toggling the Device Toolbar (Mobile emulation) in the Browser Development tools.
+
+# STYLES
+
