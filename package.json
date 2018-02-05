@@ -1,0 +1,19 @@
+{
+  "name": "tinyshell",
+  "version": "0.0.2",
+  "description": "Tiny framework with swipe and tap events for building mobile hybrid apps in Cordova",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prof3ssorSt3v3/tinyshell.git"
+  },
+  "author": "Steve Griffith <=>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prof3ssorSt3v3/tinyshell/issues"
+  },
+  "homepage": "https://github.com/prof3ssorSt3v3/tinyshell#readme"
+}
