@@ -6,7 +6,7 @@ To use the TinyShell Script you need to first create an instance of the TinyShel
 ## Methods
 **1. Constructor** 
 
-Call this to create a TinyShell manager object
+Call this to create a TinyShell manager object. Alternatively, you could call this in a loop and create a series of manager objects, each with one target.
 
 ```javascript
 let targets = document.querySelector('.cards');
