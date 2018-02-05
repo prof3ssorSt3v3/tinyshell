@@ -30,10 +30,10 @@ header{
 .page{
     position: absolute;
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     display: none;
     padding: 0;
-    margin: 4rem 0 0 0;
+    margin: 4rem 0;
     z-index: 1;
     opacity: 0;
     transition: opacity 0.4s ease-in;
@@ -79,22 +79,34 @@ header{
     width: 100%;
     padding: 1rem;
 }
+.card.round, 
+.card img.round{
+    border-radius: 0.4rem;
+}
 .card header{
     padding: 0.5rem 0;
     margin: 0;
     border-bottom: 3px solid #eee;
 }
+.card-footer{
+    padding: 0.5rem 0;
+    margin: 0;
+    border-top: 3px solid #eee;
+}
 .card header>h1{
     padding: 0 1rem;
     font-size: 3rem;
+    text-transform: capitalize;
 }
 .card header>h2{
     padding: 0 1rem;
     font-size: 2rem;
+    text-transform: capitalize;
 }
 .card header>h3{
     padding: 0 1rem;
     font-size: 1.5rem;
+    text-transform: capitalize;
 }
 .card p{
     padding: 0.2rem 1rem;
@@ -104,7 +116,7 @@ header{
 /************************************
     NAV MENU and TABS
 ************************************/
-.menu{
+.bar{
     position:fixed;
     left: 0;
     right: 0;
@@ -116,22 +128,22 @@ header{
     background-color:#eee;
     z-index: 200;
 }
-.menu h1,
-.menu h2,
-.menu h3{
+.bar h1,
+.bar h2,
+.bar h3{
     font-size: 1.5rem;
     color: #666;
     letter-spacing: 3px;
 }
-.menu.top{
+.bar.top{
     top: 0;
     border-bottom: 1px solid #ccc;
 }
-.menu.bottom{
+.bar.bottom{
     bottom: 0; 
     border-top: 1px solid #ccc;
 }
-.menu .tab{
+.bar .tab{
     flex:1 1 auto;
     align-self: center;
     text-align: center;
@@ -141,15 +153,15 @@ header{
     border-right: 1px solid #ccc;
     vertical-align:text-top;    
 }
-.menu .tab:hover,
-.menu .tab:active,
-.menu .tab.current{
+.bar .tab:hover,
+.bar .tab:active,
+.bar .tab.current{
     color: orange;
 }
-.menu .tab:last-child{
+.bar .tab:last-child{
     border-right: none;
 }
-.menu .tab.icon::before{
+.bar .tab.icon::before{
     font-size: 1.6rem;
 }
 

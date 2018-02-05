@@ -83,3 +83,134 @@ If you are testing on a laptop or desktop browser, try toggling the Device Toolb
 
 # STYLES
 
+## Pages
+
+To create pages, simply add a **div** or **section** to the **body** and give it the class "page".
+
+```html
+<div class="page"></div>
+```
+
+By default all pages are hidden from the user. If you want to make a page visible then add the CSS class "active" to the "page" **div**, either in your HTML or through JavaScript.
+
+```html
+<div class="page active"></div>
+```
+
+## Navbars 
+
+Navbars are areas that can be placed at the top or bottom of the screen. They are both fixed to allow content to scroll past underneath them. 
+
+Add a block element like **nav** or **header** to your **body**, **OUTSIDE** of any "page". Give it the class "bar" plus either the class "top" or "bottom".
+
+```html
+<header class="bar top"></header>
+
+<nav class="bar bottom"></nav>
+```
+
+Inside the bar element you can add a heading as an h1, h2, or h3 element.
+
+Alternatively you can make the bar into a navigation bar by adding divs with the class "tab".
+
+```html
+<nav class="bar bottom">
+    <div class="tab">Home</div>
+    <div class="tab">Activities</div>
+    <div class="tab">Contacts</div>
+</nav>
+```
+
+Icons can be added to the tabs by adding both the class "icon" and the class for the individual icon that you want to use.
+
+## Lists
+
+Lists are designed to hold content inside their list items. The **ul** or **ol** element should be given a class "list-view" and then the list items will each be given a class "list-item".
+
+The text inside the list item should be wrapped in a paragraph tag. 
+
+If you want to add buttons to the left or right side of a list item you can add them as spans with the class "action-right" or "action-left". If you want to put an image on the left side instead of an action button you can add an image and give it the class "avatar".
+
+```html
+<ul class="list-view">
+    <li class="list-item">
+        <img src="//www.example.com/img/pic.jpg" alt="happy" class="avatar"/>
+        <span class="action-right icon edit"></span>
+        <p>Some text to show.</p>
+    </li>
+</ul>
+```
+
+The **PARAGRAPH** should be the **last** thing inside each list-item.
+
+The action-right or action-left buttons should get the class "icon" plus the class that represents the icon you want to use for the list item.
+
+## Cards
+
+Cards are meant to be containers for content. They can have a header, a footer, and a content area.
+
+Add a div with the class "card" to your page. If you want you can add a **header** or **footer** element inside the card. Place h1, h2, or h3 elements inside the header. Place paragraphs inside the footer. 
+
+Everything between the header and footer is considered to be content for the card. Images will automatically be responsive and fill most of the width of the card.
+
+If you want a card or a card's image to have rounded corners then you can add the class "round" to either.
+
+```html
+<div class="card">
+    <header>
+        <h2>Some Title</h2>
+    </header>
+    <img src="//www.example.com/img/happy.jpg" alt="Emoji" class="round" />
+    <p>Some text to show up underneath the image inside the card.</p>
+</div>
+```
+
+## Icons
+
+The icons that are included in this framework are a subset of the ones that are available through Material Icons. Some of the icon names have been changed in the migration.
+
+[https://material.io/icons/](https://material.io/icons/)
+
+Here is the list of the names that are currently available in tinyshell.
+
+* home
+* fav
+* heart
+* headphones
+* edit
+* add
+* delete
+* remove
+* clear
+* attach
+* emoji
+* lock
+* lock-open
+* download
+* upload
+* refresh
+* share
+* camera
+* check-circle
+* star
+* help
+* info
+* external
+* user
+* marker
+* comments
+* settings
+* clock
+* store
+* thumb-up
+* thumb-down
+* calendar
+* bookmark
+* alert
+* record
+* play
+* pause
+* stop
+* volume-on
+* volume-off
+* email
