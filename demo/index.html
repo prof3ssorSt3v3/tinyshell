@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TinyShell Demo</title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        header{
+            padding: 1rem 2rem;
+        }
+        ul>li{
+            line-height: 3rem;
+            border: 1px solid #999;
+            font-size: 2rem;
+            padding: 0.5rem 2rem;
+            margin: 0.2rem;
+            list-style-position: inside;
+            cursor: pointer;
+            transform: translateX(0);
+            transition: transform 0.3s linear;
+        }
+        ul>li:hover{
+            background-color:aliceblue;
+        }
+        ul>li.moveLeft{
+            transform: translateX(-300%);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TinyShell Demo</h1>
+    </header>
+    
+    <main>
+        <ul>
+            <li>Sample Text 1</li>
+            <li>Sample Text 2</li>
+            <li>Sample Text 3</li>
+            <li>Sample Text 4</li>
+            <li>Sample Text 5</li>
+            <li>Sample Text 6</li>
+            <li>Sample Text 7</li>
+            <li>Sample Text 8</li>
+            <li>Sample Text 9</li>
+            <li>Sample Text 10</li>
+        </ul>
+    </main>
+    
+    
+    <script src="./tinyshell.min.js"></script>
+    <script>
+        //Add swipeleft listeners to the list items
+        //add the CSS class "moveLeft" when swiped
+        let tinyshell;
+        
+        document.addEventListener('DOMContentLoaded', ()=>{
+            let targets = document.querySelectorAll('li');
+            tinyshell = new t$(targets); 
+            //console.log(t$.EventTypes.SWIPERIGHT);
+            tinyshell.addEventListener(t$.EventTypes.SWIPELEFT, moveLeft); 
+            // this will add the swipeleft event to all the targets
+            tinyshell.addEventListener(t$.EventTypes.TAP, announce);
+            //this will add the tap event to all the targets
+        });
+        
+        function announce(ev){
+            alert(ev.currentTarget.tagName + ' was tapped');
+        }
+        
+        function moveLeft(ev){
+            console.log('moveLeft');
+            let li = ev.currentTarget;
+            li.classList.add('moveLeft');
+            //remove element from DOM and target from t$ targets
+            
+            setTimeout( (function(){
+                //remove the target from the array of targets
+                //and remove its event listeners
+                tinyshell.removeTarget(this);
+                //now remove the list item from the page
+                this.parentNode.removeChild(this);
+            }).bind(li), 500);
+        }
+        
+        
+    </script>
+</body>
+</html>

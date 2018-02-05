@@ -29,15 +29,12 @@
             console.log('Sorry. Your browser does not support Tap or Swipe.');
             return {
                 addEventListener: function(){
-                    this.message();
+                    console.log('Sorry. Your browser does not support TinyShell.');
                 },
                 removeTarget: function(){
-                    this.message();
+                    console.log('Sorry. Your browser does not support TinyShell.');
                 },
                 addTarget: function(){
-                    this.message()
-                },
-                message: function(){
                     console.log('Sorry. Your browser does not support TinyShell.');
                 }
             };
@@ -89,7 +86,7 @@
     t$.prototype.addEventListener = function(ev, callback){
         //set the eventtype hold the name of the callback function
         this.Events[ev].detail.callback = callback;
-            //console.log('Added listener for', ev, 'to call', callback.name );
+            console.log('Added listener for', ev, 'to call', callback.name );
         this.Params.targets.forEach(addEvs.bind(this));
         
         function addEvs(t){
@@ -110,22 +107,22 @@
         try{
             t.removeEventListener('swipeleft', this);
         }catch(e){
-            //console.log('there was no swipeleft to remove');
+            console.log('there was no swipeleft to remove');
         }
         try{
             t.removeEventListener('swiperight', this);
         }catch(e){
-            //console.log('there was no swiperight to remove');
+            console.log('there was no swiperight to remove');
         }
         try{
             t.removeEventListener('tap', this);
         }catch(e){
-            //console.log('there was no tap to remove');
+            console.log('there was no tap to remove');
         }
         t.removeEventListener('touchstart', this);
         t.removeEventListener('touchend', this);
         t.removeEventListener('touchcancel', this);
-        //console.log('Events removed for', t);
+        console.log('Events removed for', t);
         this.Params.targets.filter(function(target){ return (!target===t)});
     }
     
@@ -235,7 +232,7 @@
     }
     
     t$.prototype.handleEvent = function(ev){
-        //console.log('handling', ev.type);
+        console.log('handling', ev.type);
         switch(ev.type){
             case 'swipeleft':
             case 'swiperight':

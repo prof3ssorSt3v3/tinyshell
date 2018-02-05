@@ -7,10 +7,11 @@
 }
 html {
   font-family: $font-stack;
+  font-size: $font-size-base; 
   line-height: 1.5;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 body{
-    font-size: $font-size-base;    
+    
 }
