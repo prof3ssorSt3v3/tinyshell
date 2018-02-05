@@ -208,7 +208,7 @@
                     //do callback to be handled by this.handleEvent
                     ev.currentTarget.dispatchEvent(this.Events['swiperight']);
                 }else{
-                    console.log('Invalid swiperight');  //invalid swipe
+                    console.log('Invalid swiperight', deltaX, duration);  //invalid swipe
                 }
             }
         }
