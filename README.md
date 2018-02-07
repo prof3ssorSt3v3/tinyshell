@@ -32,7 +32,7 @@ function doSomething(ev){
 }
 ```
 
-**3. clear** 
+**3. clear( )** 
 
 To remove all the listeners and all the targets from the manager.
 
@@ -40,7 +40,7 @@ To remove all the listeners and all the targets from the manager.
 mgr.clear();
 ```
 
-**4. removeTarget** 
+**4. removeTarget( element )** 
 
 To remove a target from the array of targets, as well as it's listeners
 
@@ -51,7 +51,7 @@ mgr.removeTarget(element);
 //any listeners attached to that element
 ```
 
-**5. addTarget** 
+**5. addTarget( element )** 
 
 To add a new target to the array of targets, and the listeners
 
@@ -61,6 +61,11 @@ mgr.addTarget(element1);
 //this will add the element to the target array and give it the same callback(s)
 //as other elements in the targets array
 ```
+**5. addTargets( elements )** 
+
+To add an array (NodeList) of new targets to the array of targets. The method
+will also add any existing listeners to the target. [COMING SOON]
+
 
 
 ## Properties
