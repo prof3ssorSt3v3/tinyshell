@@ -57,13 +57,9 @@ To add a new target to the array of targets, and the listeners
 
 ```javascript
 let element1 = document.querySelector('#somediv');
-mgr.addTarget(element1, t$.EventTypes.SWIPERIGHT);
-//this will add the element to the target array and give it the same swiperight callback
+mgr.addTarget(element1);
+//this will add the element to the target array and give it the same callback(s)
 //as other elements in the targets array
-
-let element2 = document.querySelector('#anotherdiv');
-mgr.addTarget(element2, [t$.EventTypes.SWIPERIGHT, t$.EventTypes.SWIPELEFT, t$.EventTypes.TAP]);
-//this will add element2 to the targets array and give it the same callbacks for swiperight, swipeleft, and tap as other elements in the targets array.
 ```
 
 
