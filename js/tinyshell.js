@@ -89,7 +89,7 @@
     t$.prototype.addEventListener = function(ev, callback){
         //set the eventtype hold the name of the callback function
         this.Events[ev].detail.callback = callback;
-            //console.log('Added listener for', ev, 'to call', callback.name );
+            console.log('Added listener for', ev, 'to call', callback.name );
         this.Params.targets.forEach(addEvs.bind(this));
         
         function addEvs(t){
@@ -129,19 +129,22 @@
         this.Params.targets.filter(function(target){ return (!target===t)});
     }
     
-    t$.prototype.addTarget = function(t, evType){
+    t$.prototype.addTarget = function(t){
         //add a new element to the array of targets
         //add a listener for the evType to the target
-        var events;
-        if(Array.isArray(evType)){
-            events = Array.from(evType);
-        }else{
-            events = [evType];
-        }
         this.Params.targets.push(t);
-        events.forEach(function(ev){
-            t.addEventListener(ev, this);
-        });
+        var left = this.Events.swipeleft.detail.callback;
+        var right = this.Events.swiperight.detail.callback;
+        var tp = this.Events.tap.detail.callback;
+        if(left){
+            t.addEventListener('swipeleft', left);
+        }
+        if(right){
+            t.addEventListener('swipeleft', right);
+        }
+        if(tp){
+            t.addEventListener('swipeleft', tp);
+        }
         t.addEventListener('touchstart', this);
         t.addEventListener('touchend', this);
         t.addEventListener('touchcancel', this);
