@@ -52,7 +52,31 @@ header{
     margin: 1rem;
     border:1px solid #ddd;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+.card.fixed{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 50;
+}
+.card.fixed.top{
     transform: translateY(-200%);
+    opacity: 0;
+    transition: transform 0.4s linear, opacity 0.5s linear;
+}
+.card.fixed.left{
+    transform: translateX(-200%);
+    opacity: 0;
+    transition: transform 0.4s linear, opacity 0.5s linear;
+}
+.card.fixed.right{
+    transform: translateX(200%);
+    opacity: 0;
+    transition: transform 0.4s linear, opacity 0.5s linear;
+}
+.card.fixed.dot{
+    transform: scale(0);
     opacity: 0;
     transition: transform 0.4s linear, opacity 0.5s linear;
 }

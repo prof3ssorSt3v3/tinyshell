@@ -165,6 +165,19 @@ If you want a card or a card's image to have rounded corners then you can add th
     <p>Some text to show up underneath the image inside the card.</p>
 </div>
 ```
+By default, cards will stack vertically in the page. If you want them to stack in the same position then add the class "fixed" to the card. Then they will all stack in the same position on the screen. The last card will be on top.
+
+If you want a card to start off the screen, or not seen, then you have four options. Add the class "fixed" along with "top", "left", "right", or "dot".  Top, left, and right will position the card off the screen to the top, left, or right side respectively. The "dot" class shrinks the card down to 0% of it's original size.
+```html
+<div class="card fixed top">
+    <header>
+        <h2>Some Title</h2>
+    </header>
+    <img src="//www.example.com/img/happy.jpg" alt="Emoji" class="round" />
+    <p>Some text to show up underneath the image inside the card.</p>
+</div>
+```
+
 
 ## Icons
 
