@@ -171,13 +171,22 @@ If you want a card to start off the screen, or not seen, then you have four opti
 ```html
 <div class="card fixed top">
     <header>
-        <h2>Some Title</h2>
+        <h2>Currently hidden off the top of the page</h2>
     </header>
     <img src="//www.example.com/img/happy.jpg" alt="Emoji" class="round" />
     <p>Some text to show up underneath the image inside the card.</p>
 </div>
 ```
-
+When you want the card to appear on the page in it's proper position, remove the class "top", "left", "right", or "dot" and replace it with the class "active".
+```html
+<div class="card fixed active">
+    <header>
+        <h2>Now Appearing</h2>
+    </header>
+    <img src="//www.example.com/img/happy.jpg" alt="Emoji" class="round" />
+    <p>Some text to show up underneath the image inside the card.</p>
+</div>
+```
 
 ## Icons
 
