@@ -1,11 +1,11 @@
 # tiny$hell
 ## HTML5 CSS and JS framework for Mobile Hybrid Apps
 
-**Last Update: Wed Feb 7, 2018**
+**Last Update: Friday Feb 9, 2018**
 
 This Framework is designed to work primarily with Cordova Hybrid Apps. The CSS and JavaScript are optimized to work with Chrome, as this is the engine used by Cordova.
 
-The **/dist** folder contains all the files you need. Just take a copy of that folder to use in your projects.
+The **/dist** folder contains all the files you need. Just take a copy of that folder to use in your projects. You will need the JavaScript file called tinyshell.min.js, the CSS file called tinyshell.min.css, plus the fonts folder which contains the icons. 
 
 To use the TinyShell Script you need to first create an instance of the TinyShell object by calling the constructor method and passing in one or more HTML Elements as targets. Next you can call the addEventListener method once, on the TinyShell instance, for each desired event - swipeleft, swiperight, or tap.
 
