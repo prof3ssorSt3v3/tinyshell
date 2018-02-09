@@ -2,6 +2,7 @@
 ## HTML5 CSS and JS framework for Mobile Hybrid Apps
 
 **Last Update: Friday Feb 9, 2018**
+### version: 0.0.2
 
 This Framework is designed to work primarily with Cordova Hybrid Apps. The CSS and JavaScript are optimized to work with Chrome, as this is the engine used by Cordova.
 
