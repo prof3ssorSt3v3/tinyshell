@@ -15,11 +15,16 @@ To use the TinyShell Script you need to first create an instance of the TinyShel
 ## Methods
 **1. Constructor** 
 
-Call this to create a TinyShell manager object
+Call this to create a TinyShell manager object instance by passing it a single HTML element or a list of HTML elements.
 
 ```javascript
-let targets = document.querySelector('.cards');
+let targets = document.querySelectorAll('.card');
 let mgr = new t$(targets);
+//creates a new instance of tinyshell and adds an array of elements
+
+let target = document.querySelector('div');
+let tiny = new t$(target);
+//creates a new instance of tinyshell and adds a single div
 ```
 
 **2. addEventListener(eventName, callback)**
