@@ -19,12 +19,117 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body{
-    /* overflow:hidden; */
+    overflow:hidden;
+    min-height: 100vh;
+    width: 100vw;
 }
 header{
     padding: 1rem 2rem;
 }
+blockquote{
+    /**
+    add large padding
+    add border top and bottom with default .info color
+    add quotation mark icon centered on top of border(s)
+    **/
+    position:relative;
+    border-top: 2px solid hsl(192, 80%, 70%);
+    border-bottom: 2ps solid hsl(192, 80%, 70%);
+    padding: 1rem 4rem;
+    font-size: 1.0rem;
+}
+blockquote::after{
+    content: '\e244';
+    display: block;
+    position:absolute;
+    color: #fff;
+    background-color: $info;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    top: -0.75rem;
+    
+}
 
+/************************************
+    TYPOGRAPHY
+************************************/
+.t1{
+    font-size: $font-xl;
+    line-height: 1.5;
+}
+.t2{
+    font-size: $font-lg;
+    line-height: 1.5;
+}
+.t3{
+    font-size: $font-md;
+    line-height: 1.5;
+}
+.t4{
+    font-size: $font-sm;
+    line-height: 1.5;
+}
+.t5{
+    font-size: $font-xs;
+    line-height: 1.5;
+}
+.t1-1,
+.t2-1,
+.t3-1,
+.t4-1,
+.t5-1{
+    line-height: 1;
+}
+.t1-2,
+.t2-2,
+.t3-2,
+.t4-2,
+.t5-2{
+    line-height: 1;
+}
+
+/************************************
+    COLOURS
+************************************/
+.success{
+    color: $success;
+}
+.error{
+    color: $error;
+}
+.warn{
+    color: $warn;
+}
+.info{
+    color: $info;
+}
+.success-back{
+    background-color: $success;
+    color: #fff;
+    border-top: 1px solid $success-darker;
+    border-bottom: 1px solid $success-darker;
+}
+.error-back{
+    background-color: $error;
+    color: #fff;
+    border-top: 1px solid $error-darker;
+    border-top: 1px solid $error-darker;
+}
+.warn-back{
+    background-color: $warn;
+    color: #fff;
+    border-top: 1px solid $warn-darker;
+    border-top: 1px solid $warn-darker;
+}
+.info-back{
+    background-color: $info;
+    color: #fff;
+    border-top: 1px solid $info-darker;
+    border-top: 1px solid $info-darker;
+}
 /************************************
     PAGES
 ************************************/
@@ -43,6 +148,26 @@ header{
     display: block;
     z-index: 100;
     opacity: 1;
+}
+.overlay{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 200;
+}
+.overlay-bars{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 400;
+}
+.overlay>*,
+.overlay-bars>*{
+    padding: 5rem 2rem;
 }
 
 /************************************
@@ -141,7 +266,7 @@ header{
     justify-content:space-around;
     align-items: center;
     background-color:#eee;
-    z-index: 200;
+    z-index: 300;
 }
 .bar h1,
 .bar h2,
@@ -317,6 +442,9 @@ header{
 }
 .icon.email::before{
     content: '\e0be';
+}
+.icon.quote::before{
+    content: '\e244';
 }
 
 /************************************

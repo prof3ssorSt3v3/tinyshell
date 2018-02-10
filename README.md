@@ -1,8 +1,8 @@
 # tiny$hell
 ## HTML5 CSS and JS framework for Mobile Hybrid Apps
 
-**Last Update: Friday Feb 9, 2018**
-### version: 0.0.2
+**Last Update: Saturday Feb 10, 2018**
+### version: 0.0.3
 
 This Framework is designed to work primarily with Cordova Hybrid Apps. The CSS and JavaScript are optimized to work with Chrome, as this is the engine used by Cordova.
 
@@ -191,6 +191,59 @@ When you want the card to appear on the page in it's proper position, remove the
 </div>
 ```
 
+## Colours
+
+There are eigth utility classes for colours. These are meant to be used for message to users. One set of four just changes the text colour. The other four change the background colour, the text colour, and set a border on the top and bottom.
+
+The four text-only classes are "success", "error", "warn" and "info".
+
+The four classes that change background, border, and text colour are "success-back", "error-back", "warn-back", and "info-back".
+
+```html
+<p class="success">This text will be red.</p>
+
+<p class="info-back">This text will be white, on a blue background, with dark blue borders on the top and bottom.</p>
+```
+
+## Typography
+
+There are a series of utility classes for font sizes. You can add these to any elements to override the default font sizes.
+The classes are "t1", "t2", "t3", "t4", and "t5". They range in size from 4.0rem to 0.75rem. They all use 1.5 as the line-height.
+
+```html
+<p class="t4">This is size four text</p>
+```
+```css
+.t4{
+    font-size: 1.0rem;
+}
+```
+There is also a version of each class that changes the line-height to 1.0, for times when you need to conserve space. These classes all have "-1" added to the end of the name. Eg:
+```html
+<p class="t3-1">This has size 3 text with 1.0 line-height.</p>
+```
+
+There is also a version of each class that changes the line-height to 2.0, for times when you want to create more space.  These classes all have "-2" added to the end of the name. Eg: 
+```html
+<h1 class="t1-2">This has size 1 text with 2.0 as the line-height.</h1>
+```
+
+## Overlays
+
+There is an overlay class that will create a layer overtop of your screen. This will allow you to display message to the user or force them to interact with a form before returning to the app. 
+
+There are two versions of the overlay. One that covers just the working area of the screen and another that covers the page content as well as any "bar"s that you have at the top or bottom.
+
+By default, any paragraphs that you include inside the overlay will be centered with padding around the edges. If you want, you can create overlays in your HTML and then control their appearance by changing the value of their display property between 'block' and 'none'.
+
+```html
+<div class="overlay">
+    <p>This overlay will cover the content area.</p>
+</div>
+<div class="overlay-bars">
+    <p>This overlay will cover the content area PLUS the bars at the top and bottom of the content area.</p>
+</div>
+
 ## Icons
 
 The icons that are included in this framework are a subset of the ones that are available through Material Icons. Some of the icon names have been changed in the migration.
@@ -240,3 +293,4 @@ Here is the list of the names that are currently available in tinyshell.
 * volume-on
 * volume-off
 * email
+* quote

@@ -1,10 +1,10 @@
 $font-stack:  BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
 $font-size-base:  calc(2vh + 3vw + 1%);
-$font-xs: 0.8rem;
+$font-xs: 0.75rem;
 $font-sm: 1.0rem;
-$font-md: 1.6rem;
-$font-lg: 2.4rem;
-$font-xl: 3.6rem;
+$font-md: 1.5rem;
+$font-lg: 2.0rem;
+$font-xl: 3.0rem;
 
 
 $primary-color: #333333;
@@ -12,3 +12,18 @@ $primary-two: lighten($primary-color, 30%);
 $primary-three: darken($primary-color, 30%);
 $secondary-color: #DDDDDD;
 $secondary-two: lighten($secondary-color, 10%);
+
+$info: hsl(192, 80%, 40%);
+$success: hsl(131, 80%, 40%);
+$warn: hsl(50, 80%, 50%);
+$error: hsl(351, 80%, 50%);
+
+$info-lighter: lighten($info, 20%);
+$warn-lighter: lighten($warn, 20%);
+$error-lighter: lighten($error, 20%);
+$success-lighter: lighten($success, 20%);
+
+$info-darker: darken($info, 20%);
+$warn-darker: darken($warn, 20%);
+$error-darker: darken($error, 20%);
+$success-darker: darken($success, 20%);
