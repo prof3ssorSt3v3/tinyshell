@@ -1,5 +1,5 @@
 # tiny$hell
-## HTML5 CSS and JS framework for Mobile Hybrid Apps
+## CSS and JS framework for Cordova Apps
 
 **Last Update: Sunday Feb 11, 2018**
 ### version: 0.0.5
