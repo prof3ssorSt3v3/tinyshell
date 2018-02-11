@@ -1,10 +1,11 @@
 {
   "name": "tinyshell",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Tiny framework with swipe and tap events for building mobile hybrid apps in Cordova",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp sass copy && exit 0" 
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/prof3ssorSt3v3/tinyshell/issues"
   },
-  "homepage": "https://github.com/prof3ssorSt3v3/tinyshell#readme"
+  "homepage": "https://github.com/prof3ssorSt3v3/tinyshell#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify": "^2.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^3.0.0"
+  }
 }
