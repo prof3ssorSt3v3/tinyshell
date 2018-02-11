@@ -89,7 +89,7 @@
     t$.prototype.addEventListener = function(ev, callback){
         //set the eventtype hold the name of the callback function
         this.Events[ev].detail.callback = callback;
-            console.log('Added listener for', ev, 'to call', callback.name );
+            //console.log('Added listener for', ev, 'to call', callback.name );
         this.Params.targets.forEach(addEvs.bind(this));
         
         function addEvs(t){
