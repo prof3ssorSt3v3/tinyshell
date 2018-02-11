@@ -169,7 +169,12 @@ blockquote::after{
 .overlay-bars>*{
     padding: 5rem 2rem;
 }
-
+.page>.content{
+    padding: 4rem 1rem 1rem;
+}
+.page>.content.nobar{
+    padding: 1rem;
+}
 /************************************
     CARDS
 ************************************/

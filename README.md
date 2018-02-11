@@ -105,6 +105,17 @@ By default all pages are hidden from the user. If you want to make a page visibl
 ```html
 <div class="page active"></div>
 ```
+## Content Areas
+
+Page elements have no padding or margin attached to them by default. Cards and list-views have padding and margin. If you want to put content on the page and create the standard padding around the content then you need to add a section element with the className 'content'.
+
+By default this will create padding at the top to allow for a top nav bar. If you are not using a top nav bar then add both the class "content" as well as the class "nobar".
+```html
+<section class="content">
+    <h3>This heading will get standard padding</h3>
+    <p>This paragraph will get standard padding</p>
+</section>
+```
 
 ## Navbars 
 
