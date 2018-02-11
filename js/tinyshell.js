@@ -54,9 +54,9 @@
             startY:0,
             moved:false,
             duration:0,
-            maxSwipeTime: 200, 
+            maxSwipeTime: 300, 
             minDistance:25,
-            maxDistance:10,
+            maxDistance:20,
             hasTouchListeners:false
         };
         this.Events = {

@@ -19,7 +19,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body{
-    overflow:hidden;
+    overflow: auto;
     min-height: 100vh;
     width: 100vw;
 }
@@ -177,12 +177,15 @@ blockquote::after{
     margin: 1rem;
     border:1px solid #ddd;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    background-color: #fff;
 }
 .card.fixed{
     position: absolute;
     top: 1rem;
     left: 1rem;
     right: 1rem;
+    margin: 0;
+    transition: all 0.5s ease-out;
 }
 .card.fixed.top{
     transform: translateY(-200%);
@@ -226,7 +229,7 @@ blockquote::after{
 .card img{
     box-sizing: border-box;
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 }
 .card header{
     padding: 0.5rem 0;
@@ -235,22 +238,22 @@ blockquote::after{
 }
 .card header>h1{
     padding: 0 1rem;
-    font-size: 3rem;
-    line-height: 3.2rem;
+    font-size: $font-lg;
+    line-height: 1;
 }
 .card header>h2{
     padding: 0 1rem;
-    font-size: 2rem;
-    line-height: 2.2rem;
+    font-size: $font-md;
+    line-height: 1;
 }
 .card header>h3{
     padding: 0 1rem;
-    font-size: 1.5rem;
-    line-height: 1.6rem;
+    font-size: $font-sm;
+    line-height: 1;
 }
 .card p{
     padding: 0.2rem 1rem;
-    font-size: 1rem;
+    font-size: $font-sm;
 }
 
 /************************************
@@ -260,8 +263,8 @@ blockquote::after{
     position:fixed;
     left: 0;
     right: 0;
-    height: 4rem;
-    line-height: 4rem;
+    height: 3rem;
+    line-height: 3rem;
     display: flex;
     justify-content:space-around;
     align-items: center;
@@ -287,7 +290,7 @@ blockquote::after{
     flex:1 1 auto;
     align-self: center;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: $font-xs;
     line-height: 1rem;
     color: #666;
     border-right: 1px solid #ccc;
@@ -296,13 +299,14 @@ blockquote::after{
 .bar .tab:hover,
 .bar .tab:active,
 .bar .tab.current{
-    color: orange;
+    color: crimson;
 }
 .bar .tab:last-child{
     border-right: none;
 }
 .bar .tab.icon::before{
-    font-size: 1.6rem;
+    font-size: $font-sm;
+    line-height: 1;
 }
 
 /************************************
@@ -311,7 +315,7 @@ blockquote::after{
 .icon::before{
     font-family: 'Material Icons';
     font-size: inherit;
-    line-height: 2.0rem;
+    line-height: 1.2;
     display: block;
     margin:auto;
     letter-spacing: normal;
@@ -461,8 +465,7 @@ blockquote::after{
     position: relative;
 }
 .list-item p{
-    font-size: 1.3rem;
-    line-height: 1.5rem;
+    font-size: $font-sm;
     height: 4rem;
     padding: 0.5rem 3rem ;
     text-overflow: clip;
@@ -492,7 +495,7 @@ blockquote::after{
     position: absolute;
     top: 1rem;
     right: 1rem;
-    font-size: 2rem;
+    font-size: $font-md;
     line-height: 1;
     width: 2rem;
     height: 2rem;
@@ -503,7 +506,7 @@ blockquote::after{
     position: absolute;
     top: 1rem;
     left: 1rem;
-    font-size: 2rem;
+    font-size: $font-md;
     line-height: 1;
     width: 2rem;
     height: 2rem;

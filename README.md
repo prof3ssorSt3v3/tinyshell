@@ -1,8 +1,8 @@
 # tiny$hell
 ## HTML5 CSS and JS framework for Mobile Hybrid Apps
 
-**Last Update: Saturday Feb 10, 2018**
-### version: 0.0.3
+**Last Update: Sunday Feb 11, 2018**
+### version: 0.0.4
 
 This Framework is designed to work primarily with Cordova Hybrid Apps. The CSS and JavaScript are optimized to work with Chrome, as this is the engine used by Cordova.
 
