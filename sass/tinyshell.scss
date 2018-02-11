@@ -181,11 +181,14 @@ blockquote::after{
 }
 .card.fixed{
     position: absolute;
-    top: 1rem;
+    top: 4rem; /* to allow space for the top bar */
     left: 1rem;
     right: 1rem;
     margin: 0;
     transition: all 0.5s ease-out;
+}
+.card.fixed.nobar{
+    top: 1rem;
 }
 .card.fixed.top{
     transform: translateY(-200%);
