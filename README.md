@@ -259,7 +259,7 @@ By default, any paragraphs that you include inside the overlay will be centered 
 <div class="overlay-bars">
     <p>This overlay will cover the content area PLUS the bars at the top and bottom of the content area.</p>
 </div>
-
+```
 ## Icons
 
 The icons that are included in this framework are a subset of the ones that are available through Material Icons. Some of the icon names have been changed in the migration.
