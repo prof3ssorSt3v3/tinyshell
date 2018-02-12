@@ -1,11 +1,11 @@
 {
   "name": "tinyshell",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Tiny framework with swipe and tap events for building mobile hybrid apps in Cordova",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp sass copy && exit 0"
+    "build": "gulp sass copy"
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,8 @@
 # tiny$hell
 ## CSS and JS framework for Cordova Apps
 
-**Last Update: Sunday Feb 11, 2018**
-### version: 0.0.5
+**Last Update: Monday Feb 12, 2018**
+### version: 0.0.6
 
 This Framework is designed to work primarily with Cordova Hybrid Apps. The CSS and JavaScript are optimized to work with Chrome, as this is the engine used by Cordova.
 
@@ -260,6 +260,15 @@ By default, any paragraphs that you include inside the overlay will be centered 
     <p>This overlay will cover the content area PLUS the bars at the top and bottom of the content area.</p>
 </div>
 ```
+
+Once you have created an overlay you can add other HTML on top of the overlay to display to users. Add the class "message" to a section to make it appear on top of the overlay. Then you can use your own CSS or the Tiny$hell utility classes for colours and typography to output your message.
+
+```html
+<section class="message">
+    <h1 class="info t1">Important Wow</h1>
+</section>
+```
+
 ## Icons
 
 The icons that are included in this framework are a subset of the ones that are available through Material Icons. Some of the icon names have been changed in the migration.
@@ -310,3 +319,5 @@ Here is the list of the names that are currently available in tinyshell.
 * volume-off
 * email
 * quote
+
+

@@ -36,7 +36,7 @@ blockquote{
     border-top: 2px solid hsl(192, 80%, 70%);
     border-bottom: 2ps solid hsl(192, 80%, 70%);
     padding: 1rem 4rem;
-    font-size: 1.0rem;
+    font-size: $font-sm;
 }
 blockquote::after{
     content: '\e244';
@@ -45,7 +45,7 @@ blockquote::after{
     color: #fff;
     background-color: $info;
     border-radius: 50%;
-    font-size: 1.5rem;
+    font-size: $font-md;
     width: 2rem;
     height: 2rem;
     line-height: 2rem;
@@ -175,6 +175,12 @@ blockquote::after{
 .page>.content.nobar{
     padding: 1rem;
 }
+.message{
+    padding:8rem 1rem 1rem;
+    text-align: center;
+    position: relative;
+    z-index: 600; /* on top of any overlay */
+}
 /************************************
     CARDS
 ************************************/
@@ -282,7 +288,7 @@ blockquote::after{
 .bar h1,
 .bar h2,
 .bar h3{
-    font-size: 1.5rem;
+    font-size: $font-md;
     color: #666;
     letter-spacing: 3px;
 }
