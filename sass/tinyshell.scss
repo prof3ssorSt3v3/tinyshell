@@ -531,3 +531,10 @@ blockquote::after{
 .action-right:active{
     background-color: hsla(180, 50%, 70%, 0.5);
 }
+
+/************************************
+    IMAGES
+************************************/
+img.round{
+   border-radius: 0.5rem; 
+}

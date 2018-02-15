@@ -142,6 +142,14 @@ Alternatively you can make the bar into a navigation bar by adding divs with the
 ```
 
 Icons can be added to the tabs by adding both the class "icon" and the class for the individual icon that you want to use.
+```html
+<nav class="bar bottom">
+   <div class="tab current icon home">Home</div> 
+   <div class="tab icon star">Fav</div> 
+   <div class="tab icon user">User</div> 
+</nav>
+```
+Additionally, if you want to style the tab that matches the current page then add the class "current" to the tab you want highlighted. Remember that you can override this class to change the appearance of the highlighting.
 
 ## Lists
 
@@ -216,7 +224,7 @@ The four text-only classes are "success", "error", "warn" and "info".
 The four classes that change background, border, and text colour are "success-back", "error-back", "warn-back", and "info-back".
 
 ```html
-<p class="success">This text will be red.</p>
+<p class="success">This text will be green.</p>
 
 <p class="info-back">This text will be white, on a blue background, with dark blue borders on the top and bottom.</p>
 ```

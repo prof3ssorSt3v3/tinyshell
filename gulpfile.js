@@ -12,12 +12,19 @@ gulp.task('sass', () => {
         style: 'compressed'
         })
         .pipe(gulp.dest('css/'));
+    
     //copy the css to the dist folder with the .min added to the name
     gulp.src("./css/tinyshell.css")
       .pipe(rename(function (path) {
         path.basename += ".min";
       }))
       .pipe(gulp.dest("./dist/css/")); 
+    
+    //copy the css to the demo folder with all the comments not compressed
+    sass('sass/tinyshell.scss', {
+        style: 'compact'
+        })
+        .pipe(gulp.dest('demo/'));
 });
 
 gulp.task('copy', ()=>{
