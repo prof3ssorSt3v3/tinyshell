@@ -167,11 +167,14 @@ blockquote::after { content: '\e244'; display: block; position: absolute; color:
 
 .bar.bottom { bottom: 0; border-top: 1px solid #ccc; }
 
-.bar .tab { flex: 1 1 auto; align-self: center; text-align: center; font-size: 0.75rem; line-height: 1rem; color: #666; border-right: 1px solid #ccc; vertical-align: text-top; }
+.bar .tab { flex: 1 1 auto; align-self: center; text-align: center; font-size: 0.75rem; line-height: 3rem; color: #666; border-right: 1px solid #ccc; vertical-align: text-top; }
 
 .bar .tab:hover, .bar .tab:active, .bar .tab.current { color: crimson; }
 
 .bar .tab:last-child { border-right: none; }
+
+.bar .tab.icon { /* if the icon class is added too then
+reduce the line-height to 1rem */ line-height: 1rem; }
 
 .bar .tab.icon::before { font-size: 1rem; line-height: 1; }
 

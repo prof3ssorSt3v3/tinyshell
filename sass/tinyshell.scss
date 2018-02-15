@@ -305,7 +305,7 @@ blockquote::after{
     align-self: center;
     text-align: center;
     font-size: $font-xs;
-    line-height: 1rem;
+    line-height: 3rem;
     color: #666;
     border-right: 1px solid #ccc;
     vertical-align:text-top;    
@@ -317,6 +317,11 @@ blockquote::after{
 }
 .bar .tab:last-child{
     border-right: none;
+}
+.bar .tab.icon{
+    /* if the icon class is added too then
+    reduce the line-height to 1rem */
+    line-height: 1rem;
 }
 .bar .tab.icon::before{
     font-size: $font-sm;
