@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "gulp lint",
+    "babel": "gulp babel",
     "build": "gulp sass copy"
   },
   "repository": {
@@ -18,7 +20,13 @@
   },
   "homepage": "https://github.com/prof3ssorSt3v3/tinyshell#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^4.0.2",
     "gulp-minify": "^2.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^3.0.0"
