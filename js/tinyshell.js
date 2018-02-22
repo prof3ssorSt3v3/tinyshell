@@ -184,6 +184,8 @@
                     ev.currentTarget.dispatchEvent(this.Events['tap']);
                     //stop here and don't bother with the swipes
                     //since the minDistance was not reached
+                    performance.clearMarks('start');
+                    performance.clearMarks('end');
                     return;
                 }
             }
@@ -196,6 +198,9 @@
                 } else {
                     console.log('Invalid swipeleft', deltaX, duration); //invalid swipe
                 }
+                performance.clearMarks('start');
+                performance.clearMarks('end');
+                return;
             }
             //for swiperight
             if (dir == 'right' && this.Events['swiperight'].detail.callback !== null && typeof this.Events['swiperight'].detail.callback === 'function') {
@@ -206,11 +211,14 @@
                 } else {
                     console.log('Invalid swiperight', deltaX, duration); //invalid swipe
                 }
+                performance.clearMarks('start');
+                performance.clearMarks('end');
+                return;
             }
         }
     };
 
-    t$.prototype.cancel = (ev) => {
+    t$.prototype.cancel = function(ev){
         console.log('cancel');
         performance.clearMarks('start');
     };

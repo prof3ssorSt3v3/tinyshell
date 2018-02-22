@@ -1,8 +1,8 @@
 # tiny$hell
 ## CSS and JS framework for Cordova Apps
 
-**Last Update: Wednesday Feb 14, 2018**
-### version: 0.0.7
+**Last Update: Thursday Feb 22, 2018**
+### version: 0.0.8
 
 This Framework is designed to work primarily with Cordova Hybrid Apps. The CSS and JavaScript are optimized to work with Chrome, as this is the engine used by Cordova.
 
@@ -18,10 +18,6 @@ To use the TinyShell Script you need to first create an instance of the TinyShel
 Call this to create a TinyShell manager object instance by passing it a single HTML element or a list of HTML elements.
 
 ```javascript
-let targets = document.querySelectorAll('.card');
-let mgr = new t$(targets);
-//creates a new instance of tinyshell and adds an array of elements
-
 let target = document.querySelector('div');
 let tiny = new t$(target);
 //creates a new instance of tinyshell and adds a single div
