@@ -1,8 +1,8 @@
 # tiny$hell
 ## CSS and JS framework for Cordova Apps
 
-**Last Update: Thursday Feb 22, 2018**
-### version: 0.0.8
+**Last Update: Saturday Mar 3, 2018**
+### version: 0.0.9
 
 This Framework is designed to work primarily with Cordova Hybrid Apps. The CSS and JavaScript are optimized to work with Chrome, as this is the engine used by Cordova.
 
@@ -224,6 +224,57 @@ The four classes that change background, border, and text colour are "success-ba
 
 <p class="info-back">This text will be white, on a blue background, with dark blue borders on the top and bottom.</p>
 ```
+
+## Buttons
+There are two general types of buttons that can be added with the classes "btn" or "btn-small". You can create buttons with spans, anchors, buttons, or input elements.
+
+```html
+<span class="btn">Click me</span>
+<span class="btn-small">Click</span>
+```
+
+There are default sizes for the text, padding and line-height for the two buttons. If you want to style the buttons in a manner related to either Android or iOS then simply add the class "ios" or "android" to the body element on the page.
+
+```html
+<body class="ios">
+    <span class="btn">Click me</span>
+    <span class="btn-small">Click</span>
+</body>
+```
+
+You can also add the colour classes to the buttons to change their colours.
+```html
+<section class="ios">
+    <span class="btn info">Click me</span>
+    <span class="btn-small success">Click me</span>
+</section>
+<section class="android">
+    <span class="btn warn">Click</span>
+    <span class="btn-small error">Click</span>
+</section>
+```
+
+
+## Forms
+
+Some basic styling for form elements have been added too. To implement the styles you would wrap each input - label pair of tags inside a block element (like a div or paragraph) and give the class "form-row" to the block element. Next you should give the attribute "required" to the form elements. These two things will trigger the tiny$hell styles for the form elements. 
+
+```html
+<form>
+    <p class="form-row">
+        <input type="text" id="nm" required/>
+        <label for="nm">Name</label>
+    </p>
+    <p class="form-row buttons">
+        <input type="button" id="btn-cancel" class="btn-small" value="cancel"/>
+        <input type="submit" id="btn-sub" class="btn-small" value="submit"/>
+    </p>
+</form>
+```
+
+It is important that the label be placed after the input for the transitions to work properly.
+
+For a row containing buttons, if you want them to be aligned to the right side, use the additional class "buttons".
 
 ## Typography
 
