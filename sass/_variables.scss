@@ -7,13 +7,13 @@ $font-lg: 2.0rem;
 $font-xl: 3.0rem;
 
 
-$primary-color: #333333;
-$primary-two: lighten($primary-color, 30%);
-$primary-three: darken($primary-color, 30%);
-$secondary-color: #DDDDDD;
-$secondary-two: lighten($secondary-color, 10%);
+$primary-grey: #333333;
+$primary-light: lighten($primary-grey, 30%);
+$primary-dark: darken($primary-grey, 30%);
+$secondary-grey: #cccccc;
+$secondary-light: lighten($secondary-grey, 10%);
 
-$info: hsl(192, 80%, 40%);
+$info: hsl(209, 80%, 40%);
 $success: hsl(131, 80%, 40%);
 $warn: hsl(50, 80%, 50%);
 $error: hsl(351, 80%, 50%);
