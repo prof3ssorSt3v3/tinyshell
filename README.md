@@ -138,6 +138,8 @@ Alternatively you can make the bar into a navigation bar by adding divs with the
 ```
 
 Icons can be added to the tabs by adding both the class "icon" and the class for the individual icon that you want to use.
+BEST PRACTICE is to use both icons and text in your tabs.
+
 ```html
 <nav class="bar bottom">
    <div class="tab current icon home">Home</div> 
