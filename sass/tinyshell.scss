@@ -282,6 +282,11 @@ blockquote::after{
 .bar .tab:last-child{
     border-right: none;
 }
+.bar .tab.icon:empty::before{
+    /* if the tab has no text, just an icon */
+    line-height: 3rem;
+    font-size: $font-lg;
+}
 .bar .tab.icon{
     /* if the icon class is added too then
     reduce the line-height to 1rem */

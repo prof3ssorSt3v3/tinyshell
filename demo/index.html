@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>TinyShell Demo</title>
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="tinyshell.css" />
     <style>
+/*
         *{
             padding: 0;
             margin: 0;
@@ -18,6 +20,8 @@
         header{
             padding: 1rem 2rem;
         }
+*/
+/*
         ul>li{
             line-height: 3rem;
             border: 1px solid #999;
@@ -25,6 +29,7 @@
             padding: 0.5rem 2rem;
             margin: 0.2rem;
             list-style-position: inside;
+            list-style: none;
             cursor: pointer;
             transform: translateX(0);
             transition: transform 0.3s linear;
@@ -32,30 +37,37 @@
         ul>li:hover{
             background-color:aliceblue;
         }
+*/
         ul>li.moveLeft{
             transform: translateX(-300%);
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>TinyShell Demo</h1>
-    </header>
     
-    <main>
-        <ul>
-            <li>Sample Text 1</li>
-            <li>Sample Text 2</li>
-            <li>Sample Text 3</li>
-            <li>Sample Text 4</li>
-            <li>Sample Text 5</li>
-            <li>Sample Text 6</li>
-            <li>Sample Text 7</li>
-            <li>Sample Text 8</li>
-            <li>Sample Text 9</li>
-            <li>Sample Text 10</li>
+    
+    <div class="page active">
+        <header>
+            <h1>TinyShell Demo</h1>
+        </header>
+        <ul class="list-view">
+            <li class="list-item"><p>Sample Text 1</p></li>
+            <li class="list-item"><p>Sample Text 2</p></li>
+            <li class="list-item"><p>Sample Text 3</p></li>
+            <li class="list-item"><p>Sample Text 4</p></li>
+            <li class="list-item"><p>Sample Text 5</p></li>
+            <li class="list-item"><p>Sample Text 6</p></li>
+            <li class="list-item"><p>Sample Text 7</p></li>
+            <li class="list-item"><p>Sample Text 8</p></li>
+            <li class="list-item"><p>Sample Text 9</p></li>
+            <li class="list-item"><p>Sample Text 10</p></li>
         </ul>
-    </main>
+    </div>
+    
+    <nav class="bar bottom">
+        <div class="tab icon edit"></div>
+        <div class="tab icon star"></div>
+    </nav>
     
     
     <script src="./tinyshell.min.js?v=1"></script>
