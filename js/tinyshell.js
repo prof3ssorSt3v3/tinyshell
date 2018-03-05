@@ -56,7 +56,7 @@
             startY: 0,
             moved: false,
             duration: 0,
-            maxSwipeTime: 300,
+            maxSwipeTime: 400,
             minDistance: 25,
             maxDistance: 20,
             hasTouchListeners: false
@@ -184,6 +184,7 @@
                     ev.currentTarget.dispatchEvent(this.Events['tap']);
                     //stop here and don't bother with the swipes
                     //since the minDistance was not reached
+                    //clear performance labels to fix bug
                     performance.clearMarks('start');
                     performance.clearMarks('end');
                     return;
