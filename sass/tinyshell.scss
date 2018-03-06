@@ -629,7 +629,7 @@ input[type="email"]{
     line-height: $font-lg;
     font-weight: 300;
     max-width: 90vw;
-    width: 85vw;
+    width: 90vw;
 }
 select{
     color: $primary-grey;
@@ -1042,4 +1042,8 @@ a.link{
 }
 .right{
     float: right;
+}
+.center{
+    margin:auto;
+    text-align: center;
 }
