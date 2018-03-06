@@ -2,7 +2,7 @@
 ## CSS and JS framework for Cordova Apps
 
 **Last Update: Monday Mar 5, 2018**
-### version: 0.0.11
+### version: 0.0.12
 
 This Framework is designed to work primarily with Cordova Hybrid Apps. The CSS and JavaScript are optimized to work with Chrome, as this is the engine used by Cordova.
 
@@ -137,7 +137,18 @@ Alternatively you can make the bar into a navigation bar by adding divs with the
 </nav>
 ```
 
-Icons can be added to the tabs by adding both the class "icon" and the class for the individual icon that you want to use.
+If you want to create a narrower bar at the top which will just contain links then you can use the classes "bar-half" and "top".
+
+```html
+<nav class="bar-half top">
+    <a href="#" class="link left icon cancel">Cancel</a>
+    <a href="#" class="link right icon save">Save</a>
+</nav>
+```
+
+You can use anchor tags with the class "link" instead of divs with the class "tab" for a more minimal view. These can have icons added too.
+
+Icons can be added to the tabs by adding both the class "icon" and the class for the individual icon that you want to use. 
 BEST PRACTICE is to use both icons and text in your tabs.
 
 ```html
@@ -155,7 +166,7 @@ Lists are designed to hold content inside their list items. The **ul** or **ol**
 
 The text inside the list item should be wrapped in a paragraph tag. 
 
-If you want to add buttons to the left or right side of a list item you can add them as spans with the class "action-right" or "action-left". If you want to put an image on the left side instead of an action button you can add an image and give it the class "avatar".
+If you want to add buttons to the left or right side of a list item you can add them as spans with the class "action-right" or "action-left". If you want to put an image on the left side instead of an action button you can add an image and give it the class "avatar" or "avatar-box".
 
 ```html
 <ul class="list-view">
@@ -163,6 +174,7 @@ If you want to add buttons to the left or right side of a list item you can add 
         <img src="//www.example.com/img/pic.jpg" alt="happy" class="avatar"/>
         <span class="action-right icon edit"></span>
         <p>Some text to show.</p>
+        <p>Smaller text</p>
     </li>
 </ul>
 ```
@@ -326,6 +338,16 @@ Once you have created an overlay you can add other HTML on top of the overlay to
 </section>
 ```
 
+## Utility Classes
+
+There are classes "right" and "left" for floating content to the left or right.
+
+There is a "fluid" class that you can add to images or other media elements to make them responsive.
+
+```html
+    <p><img src="./img/sample.jpg" alt="Some Image" class="fluid"/></p>
+```
+
 ## Icons
 
 The icons that are included in this framework are a subset of the ones that are available through Material Icons. Some of the icon names have been changed in the migration.
@@ -343,6 +365,13 @@ Here is the list of the names that are currently available in tinyshell.
 * delete
 * remove
 * clear
+* cancel
+* save
+* arrow_up
+* arrow_down
+* arrow_right
+* arrow_left
+* microphone
 * attach
 * emoji
 * lock

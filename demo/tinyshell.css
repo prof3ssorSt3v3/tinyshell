@@ -307,12 +307,26 @@ blockquote::after {
   padding: 1rem;
 }
 
+.page > .bar + .content,
+.page > .bar-half + .content {
+  padding: 2.5rem 0.5rem 1rem;
+}
+
 .message {
   padding: 8rem 1rem 1rem;
   text-align: center;
   position: relative;
   z-index: 600;
   /* on top of any overlay */
+}
+
+img.fluid,
+video.fluid,
+audio.fluid,
+object.fluid {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 /************************************
@@ -490,6 +504,49 @@ blockquote::after {
 .bar .tab.icon::before {
   font-size: 1rem;
   line-height: 1;
+}
+
+.bar-half {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 2rem;
+  line-height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eee;
+  z-index: 300;
+}
+
+.bar-half .right {
+  float: right;
+  line-height: 2rem;
+}
+
+.bar-half .left {
+  float: right;
+  line-height: 2rem;
+}
+
+.ios .bar-half .link.right {
+  float: none;
+  position: absolute;
+  right: 1rem;
+  top: 0;
+  padding: 0.1rem;
+  line-height: 1.5rem;
+  text-align: right;
+}
+
+.ios .bar-half .link.left {
+  float: none;
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  padding: 0.1rem;
+  line-height: 1.5rem;
+  text-align: left;
 }
 
 /************************************
@@ -676,11 +733,43 @@ blockquote::after {
   content: '\e244';
 }
 
+.icon.arrow_up::before {
+  content: '\e316';
+}
+
+.icon.arrow_down::before {
+  content: '\e313';
+}
+
+.icon.arrow_left::before {
+  content: '\e314';
+}
+
+.icon.arrow_right::before {
+  content: '\e315';
+}
+
+.icon.microphone::before {
+  content: '\e31d';
+}
+
+.icon.save::before {
+  content: '\e161';
+}
+
+.icon.cancel::before {
+  content: '\e14c';
+}
+
 /************************************
     LISTS
 ************************************/
 .list-view {
   margin: 4rem 0;
+}
+
+.content .list-view {
+  margin: 0.5rem 0;
 }
 
 .list-item {
@@ -693,21 +782,34 @@ blockquote::after {
 
 .list-item p {
   font-size: 1rem;
-  height: 4rem;
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 3rem 0;
   text-overflow: clip;
+  font-weight: 500;
+  line-height: 1;
+  min-height: 3.5rem;
 }
 
+.list-item p:nth-of-type(2) {
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 0.25rem 3rem 0.25rem;
+  min-height: 1.5rem;
+  height: auto;
+  margin-top: -1.5rem;
+}
+
+.list-item .avatar-box ~ p,
 .list-item .avatar ~ p {
-  padding-left: 5rem;
+  padding-left: 4.0rem;
 }
 
 .list-item .action-left ~ p {
-  padding-left: 4rem;
+  padding-left: 3rem;
 }
 
+/* TODO handle avatar plus action left */
 .list-item .action-right ~ p {
-  padding-right: 5rem;
+  padding-right: 2.5rem;
 }
 
 .list-item:last-child {
@@ -718,19 +820,31 @@ blockquote::after {
   position: absolute;
   box-sizing: content-box;
   width: 2.8rem;
+  height: 2.8rem;
+  left: 0.5rem;
   top: 0.6rem;
-  left: 1rem;
   border-radius: 50%;
-  border: 1px solid #999;
+  border: 0px solid #999;
+}
+
+.list-item .avatar-box {
+  position: absolute;
+  box-sizing: content-box;
+  width: 2.8rem;
+  height: 2.8rem;
+  top: 0.6rem;
+  left: 0.5rem;
+  border-radius: 0;
+  border: 0px solid #999;
 }
 
 .list-item .action-right {
   position: absolute;
   top: 1rem;
-  right: 1rem;
+  right: 0.5rem;
   font-size: 1.5rem;
   line-height: 1;
-  width: 2rem;
+  width: 1.5rem;
   height: 2rem;
   border-radius: 50%;
   color: inherit;
@@ -777,6 +891,7 @@ input[type="email"] {
   line-height: 2rem;
   font-weight: 300;
   max-width: 90vw;
+  width: 85vw;
 }
 
 select {
@@ -1164,6 +1279,68 @@ button.btn-small .info {
   color: #1469b8;
 }
 
+a.link {
+  line-height: 1rem;
+  font-size: 0.75rem;
+  padding: 0.1rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 300;
+  margin: 0.1rem;
+}
+
+.ios a.link {
+  border: none;
+  display: inline-block;
+  color: #1469b8;
+  background-color: transparent;
+}
+.ios a.link.success {
+  color: #14b832;
+}
+.ios a.link.error {
+  color: #e61a38;
+}
+.ios a.link.warn {
+  color: #e6c41a;
+}
+.ios a.link.info {
+  color: #1469b8;
+}
+
+.android a.link {
+  border: none;
+  display: inline-block;
+  color: #1469b8;
+  background-color: transparent;
+}
+.android a.link.success {
+  color: #14b832;
+}
+.android a.link.error {
+  color: #e61a38;
+}
+.android a.link.warn {
+  color: #e6c41a;
+}
+.android a.link.info {
+  color: #1469b8;
+}
+
+.link.right::before {
+  float: right;
+  padding-left: 0.25rem;
+  line-height: inherit;
+  font-size: inherit;
+}
+
+.link.left::before {
+  float: left;
+  padding-right: 0.25rem;
+  line-height: inherit;
+  font-size: inherit;
+}
+
 /* needs segment controls for buttons */
 /************************************
     COLOURS
@@ -1210,4 +1387,15 @@ button.btn-small .info {
   color: #fff;
   border-top: 1px solid #0a345c;
   border-top: 1px solid #0a345c;
+}
+
+/************************************
+    UTILITIES
+************************************/
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
 }
