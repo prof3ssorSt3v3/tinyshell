@@ -789,13 +789,19 @@ object.fluid {
   min-height: 3.5rem;
 }
 
-.list-item p:nth-of-type(2) {
+.list-item > p {
+  padding: 0.25rem 3rem 0.25rem 1rem;
+}
+
+.list-item p:nth-of-type(2),
+.list-item p:nth-of-type(3),
+.list-item p:nth-of-type(4),
+.list-item p:nth-of-type(5) {
   font-size: 0.8rem;
   font-weight: 300;
-  padding: 0.25rem 3rem 0.25rem;
-  min-height: 1.5rem;
+  padding: 0.25rem 3rem 0.25rem 1rem;
+  min-height: 1.2rem;
   height: auto;
-  margin-top: -1.5rem;
 }
 
 .list-item .avatar-box ~ p,
@@ -1132,6 +1138,22 @@ button.btn-small .info {
 
 .btn-row .btn-small {
   flex: 1 1 auto;
+}
+
+.fab {
+  position: fixed;
+  bottom: 4rem;
+  right: 2rem;
+  font-size: 2rem;
+  line-height: 2.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  text-align: center;
+  background-color: #e61a38;
+  color: #fff;
+  border-radius: 50%;
+  z-index: 170;
 }
 
 .android .btn.fab {
