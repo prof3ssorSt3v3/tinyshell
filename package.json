@@ -1,13 +1,14 @@
 {
   "name": "tinyshell",
-  "version": "0.0.13",
+  "version": "1.0.0",
   "description": "Tiny framework with swipe and tap events for building mobile hybrid apps in Cordova",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf ./dist",
     "lint": "gulp lint",
-    "babel": "gulp babel",
-    "build": "gulp sass copy"
+    "sass": "gulp fonts && rm -rf ./dist/css && gulp scss",
+    "build": "rm -rf ./dist/js && gulp build"
   },
   "repository": {
     "type": "git",
@@ -20,15 +21,18 @@
   },
   "homepage": "https://github.com/prof3ssorSt3v3/tinyshell#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.1",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-eslint": "^4.0.2",
-    "gulp-minify": "^2.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-ruby-sass": "^3.0.0"
-  }
+    "gulp-eslint": "^5.0.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.11.0"
+  },
+  "dependencies": {}
 }

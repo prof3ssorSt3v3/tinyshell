@@ -6,45 +6,55 @@
 /************************************
     DEFAULTS
 ************************************/
-*{
-    padding:0;
+* {
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
 html {
-  font-family: $font-stack;
-  font-size: $font-size-base; 
-  line-height: 1.5;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+    font-family: $font-stack;
+    font-size: $font-size-base;
+    line-height: 1.5;
+    font-weight: 300;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    width: 100vw;
+    overflow-x: hidden;
 }
-body{
-    overflow: auto;
+
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
     min-height: 100vh;
     width: 100vw;
 }
-header{
+
+header {
     padding: 1rem 2rem;
 }
-section{
+
+section {
     padding: 1rem 0;
 }
-blockquote{
+
+blockquote {
     /**
     add large padding
     add border top and bottom with default .info color
     add quotation mark icon centered on top of border(s)
     **/
-    position:relative;
+    position: relative;
     border-top: 2px solid hsl(192, 80%, 70%);
     border-bottom: 2ps solid hsl(192, 80%, 70%);
     padding: 1rem 4rem;
     font-size: $font-sm;
 }
-blockquote::after{
+
+blockquote::after {
     content: '\e244';
     display: block;
-    position:absolute;
+    position: absolute;
     color: #fff;
     background-color: $info;
     border-radius: 50%;
@@ -53,67 +63,76 @@ blockquote::after{
     height: 2rem;
     line-height: 2rem;
     top: -0.75rem;
-    
+
 }
 
 /************************************
     TYPOGRAPHY
 ************************************/
-.t1{
+.t1 {
     font-size: $font-xl;
     line-height: 1.5;
 }
-.t2{
+
+.t2 {
     font-size: $font-lg;
     line-height: 1.5;
 }
-.t3{
+
+.t3 {
     font-size: $font-md;
     line-height: 1.5;
 }
-.t4{
+
+.t4 {
     font-size: $font-sm;
     line-height: 1.5;
 }
-.t5{
+
+.t5 {
     font-size: $font-xs;
     line-height: 1.5;
 }
+
 .t1-1,
 .t2-1,
 .t3-1,
 .t4-1,
-.t5-1{
+.t5-1 {
     line-height: 1;
 }
+
 .t1-2,
 .t2-2,
 .t3-2,
 .t4-2,
-.t5-2{
+.t5-2 {
     line-height: 1;
 }
 
 /************************************
     PAGES
 ************************************/
-.page{
+.page {
     position: absolute;
-    width: 100%;
+    width: 100vw;
+    overflow-x: hidden;
     min-height: 100vh;
     display: none;
-    padding: 0;
-    margin: 0;
+    // padding: 0;
+    // margin: 0;
     z-index: 1;
     opacity: 0;
     transition: opacity 0.4s ease-in;
 }
-.page.active{
+
+.page.active {
     display: block;
     z-index: 100;
     opacity: 1;
 }
-.overlay{
+
+.overlay {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -121,7 +140,8 @@ blockquote::after{
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 200;
 }
-.overlay-bars{
+
+.overlay-bars {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -129,119 +149,146 @@ blockquote::after{
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 400;
 }
+
 .overlay>*,
-.overlay-bars>*{
+.overlay-bars>* {
     padding: 5rem 2rem;
 }
-.page>.content{
+
+.page>.content {
     padding: 4rem 1rem 1rem;
 }
-.page>.content.nobar{
+
+.page>.content.nobar {
     padding: 1rem;
 }
-.page > .bar + .content,
-.page > .bar-half + .content{
+
+.page>.bar+.content,
+.page>.bar-half+.content {
     padding: 2.5rem 0.5rem 1rem;
 }
-.message{
-    padding:8rem 1rem 1rem;
+
+.message {
+    padding: 8rem 1rem 1rem;
     text-align: center;
     position: relative;
-    z-index: 600; /* on top of any overlay */
+    z-index: 600;
+    /* on top of any overlay */
 }
+
 img.fluid,
 video.fluid,
 audio.fluid,
-object.fluid{
-    width:100%;
+object.fluid {
+
+    width: 100%;
     max-width: 100%;
     height: auto;
+
+    /* object-fit: cover; */
 }
+
 /************************************
     CARDS
 ************************************/
-.card{
+.card {
     margin: 1rem;
-    border:1px solid #ddd;
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
     background-color: #fff;
 }
-.card.fixed{
+
+.card.fixed {
     position: absolute;
-    top: 4rem; /* to allow space for the top bar */
+    top: 4rem;
+    /* to allow space for the top bar */
     left: 1rem;
     right: 1rem;
     margin: 0;
     transition: all 0.5s ease-out;
 }
-.card.fixed.nobar{
+
+.card.fixed.nobar {
     top: 1rem;
 }
-.card.fixed.top{
+
+.card.fixed.top {
     transform: translateY(-200%);
     opacity: 0;
     z-index: 10;
     transition: transform 0.4s linear, opacity 0.5s linear;
 }
-.card.fixed.left{
+
+.card.fixed.left {
     transform: translateX(-200%);
     opacity: 0;
     z-index: 10;
     transition: transform 0.4s linear, opacity 0.5s linear;
 }
-.card.fixed.right{
+
+.card.fixed.right {
     transform: translateX(200%);
     opacity: 0;
     z-index: 10;
     transition: transform 0.4s linear, opacity 0.5s linear;
 }
-.card.fixed.dot{
+
+.card.fixed.dot {
     transform: scale(0);
     opacity: 0;
     z-index: 10;
     transition: transform 0.4s linear, opacity 0.5s linear;
 }
-.card.active{
+
+.card.active {
     transform: translateY(0);
     opacity: 1;
     z-index: 50;
 }
-.card.goLeft{
+
+.card.goLeft {
     background-color: hsla(0, 50%, 50%, 0.2);
     transform: translateX(-200%);
     opacity: 0;
 }
-.card.goRight{
+
+.card.goRight {
     background-color: hsla(90, 50%, 50%, 0.2);
     transform: translateX(200%);
     opacity: 0;
 }
-.card img{
+
+.card img {
     box-sizing: border-box;
     width: 100%;
     padding: 0.5rem 1rem;
 }
-.card header{
+
+.card header {
     padding: 0.5rem 0;
     margin: 0;
     border-bottom: 3px solid #eee;
 }
-.card header>h1{
+
+.card header>h1 {
     padding: 0 1rem;
     font-size: $font-lg;
     line-height: 1;
 }
-.card header>h2{
+
+.card header>h2 {
     padding: 0 1rem;
     font-size: $font-md;
     line-height: 1;
 }
-.card header>h3{
+
+.card header>h3 {
     padding: 0 1rem;
     font-size: $font-sm;
     line-height: 1;
 }
-.card p{
+
+.card p {
     padding: 0.2rem 1rem;
     font-size: $font-sm;
 }
@@ -249,66 +296,82 @@ object.fluid{
 /************************************
     NAV MENU and TABS
 ************************************/
-.bar{
-    position:fixed;
+.bar {
+    position: fixed;
     left: 0;
     right: 0;
+    top: 0;
+    /* default to top */
     height: 3rem;
     line-height: 3rem;
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
-    background-color:#eee;
+    background-color: #eee;
     z-index: 300;
 }
+
 .bar h1,
 .bar h2,
-.bar h3{
+.bar h3 {
     font-size: $font-md;
     color: #666;
     letter-spacing: 3px;
 }
-.bar.top{
+
+.bar.top {
     top: 0;
     border-bottom: 1px solid #ccc;
 }
-.bar.bottom{
-    bottom: 0; 
+
+.bar.bottom {
+    bottom: 0;
+    top: auto;
     border-top: 1px solid #ccc;
 }
-.bar .tab{
-    flex:1 1 auto;
+
+.bar .tab {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-self: center;
     text-align: center;
     font-size: $font-xs;
     line-height: 3rem;
     color: #666;
     border-right: 1px solid #ccc;
-    vertical-align:text-top;    
+    vertical-align: text-top;
 }
+
 .bar .tab:hover,
 .bar .tab:active,
-.bar .tab.current{
+.bar .tab.current {
     color: crimson;
 }
-.bar .tab:last-child{
+
+.bar .tab:last-child {
     border-right: none;
 }
-.bar .tab.icon:empty::before{
+
+.bar .tab.icon:empty::before {
     /* if the tab has no text, just an icon */
     line-height: 3rem;
     font-size: $font-lg;
 }
-.bar .tab.icon{
+
+.bar .tab.icon {
     /* if the icon class is added too then
     reduce the line-height to 1rem */
     line-height: 1rem;
 }
-.bar .tab.icon::before{
+
+.bar .tab.icon::before {
     font-size: $font-sm;
     line-height: 1;
 }
-.bar-half{
+
+.bar-half {
     position: fixed;
     left: 0;
     right: 0;
@@ -320,28 +383,34 @@ object.fluid{
     background-color: #eee;
     z-index: 300;
 }
-.bar-half .right{
-    float: right;
-    line-height: 2rem;
+
+.bar .right,
+.bar-half .right {
+    // float: right;
+    order: 100;
 }
-.bar-half .left{
-    float: right;
-    line-height: 2rem;
+
+.bar .left,
+.bar-half .left {
+    // float: right;
+    order: 1;
 }
-.ios .bar-half .link.right{
-    float: none;    
-    position:absolute;
-    right: 1rem;
-    top: 0;
+
+.ios .bar-half .link.right {
+    // float: none;    
+    // position:absolute;
+    // right: 1rem;
+    // top: 0;
     padding: 0.1rem;
     line-height: 1.5rem;
     text-align: right;
 }
-.ios .bar-half .link.left{
-    float: none;
-    position: absolute;
-    left: 1rem;
-    top:0;
+
+.ios .bar-half .link.left {
+    // float: none;
+    // position: absolute;
+    // left: 1rem;
+    // top:0;
     padding: 0.1rem;
     line-height: 1.5rem;
     text-align: left;
@@ -351,218 +420,365 @@ object.fluid{
 /************************************
     ICONS
 ************************************/
-.icon::before{
+i.icon {
+    font-style: normal;
+}
+
+.icon::before {
     font-family: 'Material Icons';
     font-size: inherit;
     line-height: 1.2;
     display: block;
-    margin:auto;
+    margin: auto;
+    font-style: inherit;
     letter-spacing: normal;
     word-wrap: normal;
     white-space: nowrap;
     direction: ltr;
     -webkit-font-smoothing: antialiased;
 }
-.icon.home::before{
+
+.icon.home::before {
     content: '\e88a';
 }
-.icon.fav::before{
+
+.icon.fav::before {
     content: '\e87d';
 }
-.icon.heart::before{
+
+.icon.heart::before {
     content: '\e87e';
 }
-.icon.headphones::before{
+
+.icon.headphones::before {
     content: '\e310';
 }
-.icon.edit::before{
+
+.icon.edit::before {
     content: '\e150';
 }
-.icon.delete::before{
+
+.icon.delete::before {
     content: '\e872';
 }
-.icon.remove::before{
+
+.icon.remove::before {
     content: '\e15d';
 }
-.icon.clear::before{
+
+.icon.clear::before {
     content: '\e14c';
 }
-.icon.add::before{
+
+.icon.add::before {
     content: '\e148';
 }
-.icon.attach::before{
+
+.icon.attach::before {
     content: '\e226';
 }
-.icon.emoji::before{
+
+.icon.emoji::before {
     content: '\e24e';
 }
-.icon.lock::before{
+
+.icon.lock::before {
     content: '\e899';
 }
-.icon.lock-open::before{
+
+.icon.lock-open::before {
     content: '\e898';
 }
-.icon.download::before{
+
+.icon.download::before {
     content: '\e2c4';
 }
-.icon.upload::before{
+
+.icon.upload::before {
     content: '\e2c6';
 }
-.icon.refresh::before{
+
+.icon.refresh::before {
     content: '\e5d5';
 }
-.icon.share::before{
+
+.icon.share::before {
     content: '\e80d';
 }
-.icon.camera::before{
+
+.icon.camera::before {
     content: '\e3b0';
 }
-.icon.check-circle::before{
+
+.icon.check-circle::before {
     content: '\e86c';
 }
-.icon.star::before{
+
+.icon.star::before {
     content: '\e885';
 }
-.icon.help::before{
+
+.icon.help::before {
     content: '\e8fd';
 }
-.icon.info::before{
+
+.icon.info::before {
     content: '\e88f';
 }
-.icon.external::before{
+
+.icon.external::before {
     content: '\e895';
 }
-.icon.user::before{
+
+.icon.user::before {
     content: '\e8a6';
 }
-.icon.comments::before{
+
+.icon.comments::before {
     content: '\e8af';
 }
-.icon.marker::before{
+
+.icon.marker::before {
     content: '\e8b4';
 }
-.icon.settings::before{
+
+.icon.settings::before {
     content: '\e8b8';
 }
-.icon.clock::before{
+
+.icon.clock::before {
     content: '\e8b5';
 }
-.icon.store::before{
+
+.icon.store::before {
     content: '\e8d1';
 }
-.icon.thumb-up::before{
+
+.icon.thumb-up::before {
     content: '\e8db';
 }
-.icon.thumb-down::before{
+
+.icon.thumb-down::before {
     content: '\e8dc';
 }
-.icon.calendar::before{
+
+.icon.calendar::before {
     content: '\e8df';
 }
-.icon.bookmark::before{
+
+.icon.bookmark::before {
     content: '\e8e7';
 }
-.icon.alert::before{
+
+.icon.alert::before {
     content: '\e001';
 }
-.icon.record::before{
+
+.icon.record::before {
     content: '\e061';
 }
-.icon.play::before{
+
+.icon.play::before {
     content: '\e037';
 }
-.icon.pause::before{
+
+.icon.pause::before {
     content: '\e034';
 }
-.icon.stop::before{
+
+.icon.stop::before {
     content: '\e047';
 }
-.icon.volume-on::before{
+
+.icon.volume-on::before {
     content: '\e050';
 }
-.icon.volume-off::before{
+
+.icon.volume-off::before {
     content: '\e04f';
 }
-.icon.email::before{
+
+.icon.email::before {
     content: '\e0be';
 }
-.icon.quote::before{
+
+.icon.quote::before {
     content: '\e244';
 }
+
 .icon.arrow_up::before {
-  content: '\e316';
+    content: '\e316';
 }
+
 .icon.arrow_down::before {
-  content: '\e313';
+    content: '\e313';
 }
+
 .icon.arrow_left::before {
-  content: '\e314';
+    content: '\e314';
 }
+
 .icon.arrow_right::before {
-  content: '\e315';
+    content: '\e315';
 }
+
 .icon.microphone::before {
-  content: '\e31d';
+    content: '\e31d';
 }
+
 .icon.save::before {
-  content: '\e161';
+    content: '\e161';
 }
-.icon.cancel::before{
+
+.icon.cancel::before {
     content: '\e14c';
 }
 
 /************************************
     LISTS
 ************************************/
-.list-view{
-    margin:4rem 0;
+.list-view {
+    margin: 4rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
 }
-.content .list-view{
+
+.content .list-view {
     margin: 0.5rem 0;
 }
-.list-item{
+
+.list-item {
     list-style-type: none;
-    border: 1px solid #eee;
     color: #999;
-    border-bottom: none;
-    position: relative;
+    border-bottom: 1px solid #999;
+    // position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100vw;
+    transform: translateX(0px);
 }
-.list-item p{
+
+.list-item.has-reveal-left {
+    width: calc(100vw + 20vw);
+    transform: translateX(-20vw);
+}
+
+.list-item.has-reveal-right {
+    width: calc(100vw + 20vw);
+}
+
+.list-item.has-reveal-both {
+    width: calc(100vw + 40vw);
+    transform: translateX(-20vw);
+}
+
+.list-item .list-text {
     font-size: $font-sm;
-    padding: 0.5rem 3rem 0;
+    padding: 0.5rem 1rem;
     text-overflow: clip;
-    font-weight: 500;
-    line-height: 1;
-    min-height: 3.5rem;
-}
-.list-item>p{
-    padding: 0.25rem 3rem 0.25rem 1rem;
-}
-.list-item p:nth-of-type(2),
-.list-item p:nth-of-type(3),
-.list-item p:nth-of-type(4),
-.list-item p:nth-of-type(5)   {
-    font-size: 0.8rem;
     font-weight: 300;
-    padding: 0.25rem 3rem 0.25rem 1rem;
-    min-height: 1.2rem;
-    height: auto;
+    line-height: 1;
+    min-height: 3rem;
+    order: 3;
+    display: flex;
+    flex-basis: 100vw;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 30;
 }
-.list-item .avatar-box~p,
-.list-item .avatar~p{
-    padding-left: 4.0rem;
+
+.list-item .reveal-left {
+    order: 1;
+    // width: 20vw;
+    flex-basis: 20vw;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: hsla(0, 50%, 50%, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 4px solid hsla(0, 50%, 30%, 0.32);
 }
-.list-item .action-left ~ p{
-    padding-left: 3rem;
+
+.list-item .reveal-right {
+    order: 5;
+    // width: 20vw;
+    flex-basis: 20vw;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: hsla(100, 50%, 50%, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 4px solid hsla(100, 50%, 30%, 0.32);
 }
-/* TODO handle avatar plus action left */
-.list-item .action-right ~ p{
-    padding-right: 2.5rem;
+
+.list-item .icon {
+    font-size: $font-md;
 }
-.list-item:last-child{
+
+// .list-item .list-text:nth-last-child(2) {
+//     box-shadow: 4px 0 0px hsla(0, 0%, 0%, 0.5);
+// }
+
+// .list-item .action-right:nth-last-child(2) {
+//     box-shadow: 4px 0 0px hsla(0, 0%, 0%, 0.5);
+// }
+
+// .list-item .action-left:nth-child(2) {
+//     box-shadow: -4px 0 0px hsla(0, 0%, 0%, 0.5);
+// }
+
+// .list-item .list-text:nth-child(2) {
+//     box-shadow: -4px 0 0px hsla(0, 0%, 0%, 0.5);
+// }
+
+.list-item:last-child {
     border-bottom: 1px solid #eee;
 }
-.list-item .avatar{
+
+.list-item .action-right {
+    order: 4;
+    font-size: $font-md;
+    // line-height: 1;
+    // width: 20vw;
+    flex-basis: 20vw;
+    // height: 2rem;
+    border-radius: 50%;
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.list-item .action-left {
+    order: 2;
+    font-size: $font-md;
+    line-height: 1;
+    // width: 20vw;
+    flex-basis: 20vw;
+    height: 2rem;
+    border-radius: 50%;
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.action-left:active,
+.action-right:active {
+    background-color: hsla(180, 50%, 70%, 0.5);
+}
+
+.list-item .avatar {
     position: absolute;
     box-sizing: content-box;
     width: 2.8rem;
@@ -570,9 +786,10 @@ object.fluid{
     left: 0.5rem;
     top: 0.6rem;
     border-radius: 50%;
-    border:0px solid #999;
+    border: 0px solid #999;
 }
-.list-item .avatar-box{
+
+.list-item .avatar-box {
     position: absolute;
     box-sizing: content-box;
     width: 2.8rem;
@@ -582,38 +799,13 @@ object.fluid{
     border-radius: 0;
     border: 0px solid #999;
 }
-.list-item .action-right{
-    position: absolute;
-    top: 1rem;
-    right: 0.5rem;
-    font-size: $font-md;
-    line-height: 1;
-    width: 1.5rem;
-    height: 2rem;
-    border-radius: 50%;
-    color: inherit;
-}
-.list-item .action-left{
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    font-size: $font-md;
-    line-height: 1;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    color: inherit;
-}
-.action-left:active,
-.action-right:active{
-    background-color: hsla(180, 50%, 70%, 0.5);
-}
+
 
 /************************************
     IMAGES
 ************************************/
-img.round{
-   border-radius: 0.5rem; 
+img.round {
+    border-radius: 0.5rem;
 }
 
 /************************************
@@ -626,7 +818,7 @@ input[type="url"],
 input[type="password"],
 input[type="number"],
 input[type="file"],
-input[type="email"]{
+input[type="email"] {
     color: $primary-grey;
     border: none;
     border-bottom: 1px solid $primary-light;
@@ -636,7 +828,8 @@ input[type="email"]{
     max-width: 90vw;
     width: 90vw;
 }
-select{
+
+select {
     color: $primary-grey;
     border: 1px solid $primary-light;
     font-size: $font-md;
@@ -646,28 +839,32 @@ select{
     min-width: 90vw;
     max-width: 90vw;
 }
-option{
-    color: $primary-grey; 
+
+option {
+    color: $primary-grey;
     font-size: $font-md;
     line-height: $font-lg;
     font-weight: 300;
 }
-optgroup{
+
+optgroup {
     color: $primary-dark;
     font-size: $font-md;
     line-height: $font-lg;
     font-weight: 500;
 }
+
 button,
 input[type="submit"],
 input[type="reset"],
-input[type="button"]{
+input[type="button"] {
     /* color: $primary-grey; */
     font-size: $font-md;
     padding: 0.1rem 1rem;
-    width:auto;
+    width: auto;
 }
-input[type="radio"]{
+
+input[type="radio"] {
     color: $primary-grey;
     font-size: $font-md;
     line-height: $font-lg;
@@ -675,7 +872,8 @@ input[type="radio"]{
     height: $font-sm;
     margin-top: (($font-lg - $font-sm)/2);
 }
-input[type="checkbox"]{
+
+input[type="checkbox"] {
     color: $primary-grey;
     font-size: $font-md;
     line-height: $font-lg;
@@ -683,112 +881,123 @@ input[type="checkbox"]{
     height: $font-sm;
     margin-top: (($font-lg - $font-sm)/2);
 }
-textarea{
+
+textarea {
     color: $primary-grey;
     border: 1px solid $primary-light;
     font-size: $font-md;
     line-height: $font-lg;
     max-width: 90vw;
 }
-label{
+
+label {
     color: $primary-light;
     font-size: $font-sm;
     font-weight: 300;
     line-height: $font-md;
 }
-form{
+
+form {
     padding: 0 1rem;
     max-width: 100vw;
     box-sizing: border-box;
 }
-legend{
+
+legend {
     color: $primary-light;
     font-size: $font-md;
     line-height: $font-lg;
 }
-fieldset{
+
+fieldset {
     color: $primary-light;
     border-color: $primary-light;
     outline-color: $primary-light;
 }
-.form-row{
+
+.form-row {
     margin-top: 0.5rem;
     padding: 0;
     position: relative;
     clear: both;
     min-height: ($font-md + $font-sm);
 }
-.form-row.buttons{
+
+.form-row.buttons {
     text-align: right;
 }
-.form-row input[type="text"] + label,
-.form-row input[type="tel"] + label,
-.form-row input[type="email"] + label,
-.form-row input[type="password"] + label,
-.form-row input[type="number"] + label,
-.form-row input[type="url"] + label,
-.form-row input[type="file"] + label,
-.form-row select + label{
+
+.form-row input[type="text"]+label,
+.form-row input[type="tel"]+label,
+.form-row input[type="email"]+label,
+.form-row input[type="password"]+label,
+.form-row input[type="number"]+label,
+.form-row input[type="url"]+label,
+.form-row input[type="file"]+label,
+.form-row select+label {
     /* only for text inputs and select */
     position: absolute;
     transition: transform 0.2s linear;
 }
-.form-row input[type="radio"] + label,
-.form-row input[type="checkbox"] + label{
+
+.form-row input[type="radio"]+label,
+.form-row input[type="checkbox"]+label {
     transform: translate(0);
     margin: 0.1rem 0.5rem;
-    float:left;
+    float: left;
 }
+
 .form-row input[type="radio"],
-.form-row input[type="checkbox"]{
-    
-}
+.form-row input[type="checkbox"] {}
+
 input:focus,
-select:focus{
+select:focus {
     outline: none;
 }
-input:required:invalid + label{
+
+input:required:invalid+label {
     /* labels for inputs that ARE empty but not :focused -X */
     font-size: $font-sm;
     line-height: $font-md;
     transform: translateY(-($font-md));
 }
-select + label{
+
+select+label {
     font-size: $font-xs;
     line-height: $font-xs;
     transform: translateY(-($font-lg + $font-md));
 }
-input:required:valid + label,
-input:required:focus + label{
+
+input:required:valid+label,
+input:required:focus+label {
     /* labels for inputs that are not empty -x */
     /* label immediately after input that has focus regardless of content -x */
     font-size: $font-xs;
     line-height: $font-xs;
     transform: translateY(-($font-md + $font-sm));
 }
+
 input:disabled,
-input:read-only{
-    
-}
+input:read-only {}
+
 input:invalid,
-input:out-of-range{
-    
-}
-input:required{
-    
-}
+input:out-of-range {}
+
+input:required {}
+
 /************************************
     BUTTONS
 ************************************/
-.btn-row{
-    display:flex;
+.btn-row {
+    display: flex;
     align-content: space-around;
     justify-content: space-around;
 }
+
 .btn,
 a.btn,
 input.btn,
-button.btn{
+button.btn {
     border: 1px solid $info;
     line-height: $font-md;
     font-size: $font-sm;
@@ -798,24 +1007,28 @@ button.btn{
     color: rgba(255, 255, 255, 1);
     text-decoration: none;
     font-weight: 300;
-    
-    .success{
+
+    .success {
         background-color: $success;
     }
-    .error{
+
+    .error {
         background-color: $error;
     }
-    .warn{
+
+    .warn {
         background-color: $warn;
     }
-    .info{
+
+    .info {
         background-color: $info;
     }
 }
+
 .btn-small,
 a.btn-small,
 input.btn-small,
-button.btn-small{
+button.btn-small {
     border: 1px solid $info;
     line-height: $font-sm;
     font-size: $font-xs;
@@ -825,28 +1038,34 @@ button.btn-small{
     text-decoration: none;
     font-weight: 300;
     margin: 0.1rem;
-    
-    .success{
+
+    .success {
         background-color: $success;
     }
-    .error{
+
+    .error {
         background-color: $error;
     }
-    .warn{
+
+    .warn {
         background-color: $warn;
     }
-    .info{
+
+    .info {
         background-color: $info;
     }
 }
-.btn-row .btn{
+
+.btn-row .btn {
     flex: 1 1 auto;
 }
-.btn-row .btn-small{
+
+.btn-row .btn-small {
     flex: 1 1 auto;
 }
-.fab{
-    position:fixed;
+
+.fab {
+    position: fixed;
     bottom: 4rem;
     right: 2rem;
     font-size: 2rem;
@@ -855,31 +1074,36 @@ button.btn-small{
     height: 2.4rem;
     padding: 0;
     text-align: center;
-    background-color:#e61a38;
+    background-color: #e61a38;
     color: #fff;
     border-radius: 50%;
     z-index: 170;
 }
-.android .btn.fab{
+
+.android .btn.fab {
     border-radius: 50%;
     width: $font-lg;
     height: $font-lg;
     vertical-align: middle;
     padding: 0.2rem;
-    
-    &.success{
+
+    &.success {
         background-color: $success;
     }
-    &.error{
+
+    &.error {
         background-color: $error;
     }
-    &.warn{
+
+    &.warn {
         background-color: $warn;
     }
-    &.info{
+
+    &.info {
         background-color: $info;
     }
 }
+
 .android .btn,
 .android input.btn,
 .android a.btn,
@@ -887,73 +1111,85 @@ button.btn-small{
 .android .btn-small,
 .android a.btn-small,
 .android input.btn-small,
-.android button.btn-small{
+.android button.btn-small {
     /* use the info colours */
     color: rgb(255, 255, 255);
     border-radius: 0;
     border: none;
-    
-    &.success{
+
+    &.success {
         background-color: $success;
     }
-    &.error{
+
+    &.error {
         background-color: $error;
     }
-    &.warn{
+
+    &.warn {
         background-color: $warn;
     }
-    &.info{
+
+    &.info {
         background-color: $info;
     }
 }
+
 .ios .btn,
 .ios input.btn,
 .ios a.btn,
-.ios button.btn{
+.ios button.btn {
     /* use the info colours */
     color: $info;
     background-color: transparent;
     border-radius: 0.3rem;
-    
-    &.success{
+
+    &.success {
         color: $success;
         border-color: $success;
     }
-    &.error{
+
+    &.error {
         color: $error;
         border-color: $error;
     }
-    &.warn{
+
+    &.warn {
         color: $warn;
         border-color: $warn;
     }
-    &.info{
+
+    &.info {
         color: $info;
         border-color: $info;
     }
 }
+
 .ios .btn-small,
 .ios a.btn-small,
 .ios input.btn-small,
-.ios button.btn-small{
+.ios button.btn-small {
     border-radius: 0.3rem;
     color: $info;
     background-color: transparent;
-    
-    &.success{
+
+    &.success {
         color: $success;
     }
-    &.error{
+
+    &.error {
         color: $error;
     }
-    &.warn{
+
+    &.warn {
         color: $warn;
     }
-    &.info{
+
+    &.info {
         color: $info;
     }
 }
-a.link{
+
+a.link {
     line-height: $font-sm;
     font-size: $font-xs;
     padding: 0.1rem 1rem;
@@ -962,92 +1198,110 @@ a.link{
     font-weight: 300;
     margin: 0.1rem;
 }
-.ios a.link{
+
+.ios a.link {
     border: none;
     display: inline-block;
     color: $info;
     background-color: transparent;
-    
-    &.success{
+
+    &.success {
         color: $success;
     }
-    &.error{
+
+    &.error {
         color: $error;
     }
-    &.warn{
+
+    &.warn {
         color: $warn;
     }
-    &.info{
+
+    &.info {
         color: $info;
     }
 }
-.android a.link{
+
+.android a.link {
     border: none;
     display: inline-block;
     color: $info;
     background-color: transparent;
-    
-    &.success{
+
+    &.success {
         color: $success;
     }
-    &.error{
+
+    &.error {
         color: $error;
     }
-    &.warn{
+
+    &.warn {
         color: $warn;
     }
-    &.info{
+
+    &.info {
         color: $info;
     }
 }
-.link.right::before{
-    float:right;
+
+.link.right::before {
+    float: right;
     padding-left: 0.25rem;
     line-height: inherit;
     font-size: inherit;
 }
-.link.left::before{
+
+.link.left::before {
     float: left;
     padding-right: 0.25rem;
     line-height: inherit;
     font-size: inherit;
 }
+
 /* needs segment controls for buttons */
 
 /************************************
     COLOURS
 ************************************/
-.success{
+.success {
     color: $success;
 }
-.error{
+
+.error {
     color: $error;
 }
-.warn{
+
+.warn {
     color: $warn;
 }
-.info{
+
+.info {
     color: $info;
 }
-.success-back{
+
+.success-back {
     background-color: $success;
     color: #fff;
     border-top: 1px solid $success-darker;
     border-bottom: 1px solid $success-darker;
 }
-.error-back{
+
+.error-back {
     background-color: $error;
     color: #fff;
     border-top: 1px solid $error-darker;
     border-top: 1px solid $error-darker;
 }
-.warn-back{
+
+.warn-back {
     background-color: $warn;
     color: #fff;
     border-top: 1px solid $warn-darker;
     border-top: 1px solid $warn-darker;
 }
-.info-back{
+
+.info-back {
     background-color: $info;
     color: #fff;
     border-top: 1px solid $info-darker;
@@ -1057,15 +1311,15 @@ a.link{
 /************************************
     UTILITIES
 ************************************/
-.left{
+.left {
     float: left;
 }
-.right{
+
+.right {
     float: right;
 }
-.center{
-    margin:auto;
+
+.center {
+    margin: auto;
     text-align: center;
 }
-
-
