@@ -26,12 +26,14 @@ let tiny = new tinyshell(target);
 //creates a new instance of tinyshell and adds the selected element
 ```
 
+You will need the variable `tiny` later on to add the Event Listeners to the element.
+
 **2. addEventListener(eventName, callback)**
 
 Call this to add a listener for one of the possible events to the element contained inside the tinyshell object.
 
 ```javascript
-mgr.addEventListener("swipeleft", doSomething);
+tiny.addEventListener("swipeleft", doSomething);
 
 function doSomething(ev) {
   //ev.currentTarget will be the HTML element that triggered this
@@ -119,6 +121,8 @@ When testing in an iOS Simulator you will need to use XCode to see the console m
 
 # STYLES
 
+Version 1.x of the Tiny\$hell framework styles use **flexbox** for alignment and layout instead of the floats that were used in version 0.x of the framework.
+
 ## Pages
 
 To create pages, simply add a **div** or **section** to the **body** and give it the class "page".
@@ -137,9 +141,12 @@ By default all pages are hidden from the user. If you want to make a page visibl
 
 Page elements have no padding or margin attached to them by default. Cards and list-views have padding and margin. If you want to put content on the page and create the standard padding around the content then you need to add a section element with the className 'content'.
 
-By default this will create padding at the top to allow for a top nav bar. If you are not using a top nav bar then add both the class "content" as well as the class "nobar".
+By default this will create padding at the top to allow for a top nav bar. If you are not using a top nav bar then add both the class `content` as well as the class `nobar`.
 
 ```html
+<section class="content nobar">
+  <p>Some content in the page that has no header bar at the top.</p>
+</section>
 <section class="content">
   <h3>This heading will get standard padding</h3>
   <p>This paragraph will get standard padding</p>
@@ -198,24 +205,42 @@ Additionally, if you want to style the tab that matches the current page then ad
 
 Lists are designed to hold content inside their list items. The **ul** or **ol** element should be given a class "list-view" and then the list items will each be given a class "list-item".
 
-The text inside the list item should be wrapped in a paragraph tag.
+If you want to add buttons to the left or right side of a list item, which will always be visible, you can add them as divs with the class `action-right` or `action-left`. If you want to put an image on the left side instead of an action button you can add an image inside the div and give it the class `avatar` or `avatar-box`.
 
-If you want to add buttons to the left or right side of a list item you can add them as spans with the class "action-right" or "action-left". If you want to put an image on the left side instead of an action button you can add an image and give it the class "avatar" or "avatar-box".
+### RevealLeft and RevealRight Elements
+
+New in this version of Tiny\$hell are the `reveal-left` and `reveal-right` areas. These are divs that will be placed to the left or right of the `list-item` however they cannot be seen unless the user drags the `list-item` to the left or right. These elements are the purpose of the `revealleft` and `revealright` events.
+
+When you add the `reveal-left` and/or `reveal-right` divs then you also need to add a class to the `list-item`. The choices are `has-reveal-left`, `has-reveal-right` and `has-reveal-both`. These three classes are required by the script that runs when you add the `revealleft` or `revealright` event listener to the `list-item`.
 
 ```html
 <ul class="list-view">
+  <li class="list-item has-reveal-left">
+    <div class="reveal-left"><i class="icon delete"></i></div>
+    <div class="list-text">Drag this one left.</div>
+    <div class="action-right"><span class="icon edit"></span></div>
+  </li>
+  <li class="list-item has-reveal-both">
+    <div class="reveal-left"><i class="icon delete"></i></div>
+    <div class="list-text">Drag this one right.</div>
+    <div class="reveal-right"><i class="icon delete"></i></div>
+  </li>
   <li class="list-item">
-    <img src="//www.example.com/img/pic.jpg" alt="happy" class="avatar" />
-    <span class="action-right icon edit"></span>
-    <p>Some text to show.</p>
-    <p>Smaller text</p>
+    <div class="action-left">
+      <img src="//www.example.com/img/pic.jpg" alt="happy" class="avatar" />
+    </div>
+    <div class="list-text">
+      <p>Some text to show.</p>
+      <p>Some more text.</p>
+    </div>
+    <div class="action-right">
+      <i class="icon edit"></i>
+    </div>
   </li>
 </ul>
 ```
 
-The **PARAGRAPH** should be the **last** thing inside each list-item.
-
-The action-right or action-left buttons should get the class "icon" plus the class that represents the icon you want to use for the list item.
+The action-right or action-left buttons could get the class `icon` plus the class that represents the icon you want to use for the list item OR you can put a `span` or `i` element inside the div with the class `icon` and the class name for the type of icon you want. See the notes on icons below.
 
 ## Cards
 
