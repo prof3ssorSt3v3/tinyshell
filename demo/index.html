@@ -1,103 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>TinyShell Demo</title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="tinyshell.css" />
+    <meta charset="UTF-8" />
+    <title>TinyShell Framework</title>
+    <link rel="stylesheet" href="./dist/css/tinyshell.css" />
+    <style>
+        .list-item {
+            background-color: #eee;
+            transition: transform 0.4s linear;
+        }
+
+        .goleft {
+            transform: translateX(-200%);
+        }
+
+        .goright {
+            transform: translateX(200%);
+        }
+    </style>
 </head>
+
 <body>
-    
-    <div class="page active">
-        <header>
-            <h1>TinyShell Demo</h1>
-        </header>
+    <nav class="bar bottom">
+        <div class="tab icon home">Home</div>
+        <div class="tab icon settings">Activities</div>
+        <div class="tab icon user">Contacts</div>
+    </nav>
+    <section class="page active">
+        <section class="content nobar">
+            <h1 class="info-back">This heading is an H1</h1>
+            <p>This is some text inside a content area.</p>
+        </section>
         <ul class="list-view">
-            <li class="list-item">
-                <div class="list-text">
-                    <p>Sample Text 1</p>
-                </div>
+            <li class="list-item has-reveal-left">
+                <div class="reveal-left"><i class="icon delete"></i></div>
+                <div class="list-text">Drag this one left.</div>
+                <div class="action-right"><span class="icon edit"></span></div>
+            </li>
+            <li class="list-item has-reveal-both">
+                <div class="reveal-left"><i class="icon delete"></i></div>
+                <div class="list-text">Drag this one right.</div>
+                <div class="reveal-right"><i class="icon delete"></i></div>
             </li>
             <li class="list-item">
-                <div class="list-text">
-                    <p>Sample Text 2</p>
-                </div>
+                <div class="list-text">Tap this one.</div>
             </li>
             <li class="list-item">
-                <div class="list-text">
-                    <p>Sample Text 3</p>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="list-text">
-                    <p>Sample Text 4</p>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="list-text">
-                    <p>Sample Text 5</p>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="list-text">
-                    <p>Sample Text 6</p>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="list-text">
-                    <p>Sample Text 7</p>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="list-text">
-                    <p>Sample Text 8</p>
-                </div>
+                <div class="list-text">Swipe this one left or right.</div>
             </li>
         </ul>
-    </div>
-    
-    <nav class="bar bottom">
-        <div class="tab icon edit"></div>
-        <div class="tab icon star"></div>
-    </nav>
-    
-    
-    <script src="./tinyshell.min.js?v=1"></script>
+    </section>
+
+    <script src="./dist/js/tinyshell-min.js"></script>
     <script>
-        //Add swipeleft listeners to the list items
-        //add the CSS class "moveLeft" when swiped
-        let tinyshell;
-        
-        document.addEventListener('DOMContentLoaded', ()=>{
-            let targets = document.querySelectorAll('li');
-            tinyshell = new t$(targets); 
-            //console.log(t$.EventTypes.SWIPERIGHT);
-            tinyshell.addEventListener(t$.EventTypes.SWIPELEFT, moveLeft); 
-            // this will add the swipeleft event to all the targets
-            tinyshell.addEventListener(t$.EventTypes.TAP, announce);
-            //this will add the tap event to all the targets
+        document.addEventListener("DOMContentLoaded", () => {
+            let first = document.querySelector(".list-item:nth-of-type(1)");
+            let firstTinyShell = new tinyshell(first);
+            firstTinyShell.addEventListener("revealright", one);
+
+            let second = document.querySelector(".list-item:nth-of-type(2)");
+            let secondTinyShell = new tinyshell(second);
+            secondTinyShell.addEventListener("revealleft", one);
+
+            let third = document.querySelector('.list-item:nth-child(3)');
+            let thirdTinyShell = new tinyshell(third);
+            thirdTinyShell.addEventListener('tap', one);
+
+            let fourth = document.querySelector('.list-item:nth-child(4)');
+            let fourthTinyShell = new tinyshell(fourth);
+            fourthTinyShell.addEventListener('swipeleft', left);
+            fourthTinyShell.addEventListener('swiperight', right);
         });
-        
-        function announce(ev){
-            alert(ev.currentTarget.tagName + ' was tapped');
+
+        function one(ev) {
+            console.log("function one called by event ", ev);
+            let p = document.querySelector('.content p').textContent = JSON.stringify(ev, '\t', 2);
         }
-        
-        function moveLeft(ev){
-            console.log('moveLeft');
+
+        function left(ev) {
+            //swiped left... add the class 'goleft' to the element
             let li = ev.currentTarget;
-            li.classList.add('moveLeft');
-            //remove element from DOM and target from t$ targets
-            
-            setTimeout( (function(){
-                //remove the target from the array of targets
-                //and remove its event listeners
-                tinyshell.removeTarget(this);
-                //now remove the list item from the page
-                this.parentNode.removeChild(this);
-            }).bind(li), 500);
+            console.log(li);
+            li.classList.add('goleft');
+            setTimeout((function () {
+                this.parentElement.removeChild(this);
+            }).bind(ev.currentTarget), 500);
         }
-        
-        
+
+        function right(ev) {
+            //swiped left... add the class 'goleft' to the element
+            let li = ev.currentTarget;
+            console.log(li);
+            li.classList.add('goright');
+            setTimeout((function () {
+                this.parentElement.removeChild(this);
+            }).bind(ev.currentTarget), 500);
+        }
     </script>
 </body>
+
 </html>
