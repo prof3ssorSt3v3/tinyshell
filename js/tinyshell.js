@@ -77,16 +77,13 @@ class tinyshell {
             this.element.addEventListener(ev, callback);
         }
         this.Params.listeners.add(this.Events[ev]);
-        console.log('added', ev, 'to', this.element);
-        //console.log(this.Params.listeners);
         this.Params.pageWidth = document.body.clientWidth;
         this.Params.twenty = document.body.clientWidth * 0.2;
         this.Params.maxDrag = this.Params.pageWidth * 0.8;
         this.Params.minDrag = this.Params.maxDrag * 0.2;
 
         if (this.Params.listeners.size === 1) {
-            console.log('adding the touchevents');
-            //console.log(this.Params.listeners);
+            // adding the touchevents
             this.element.addEventListener('touchstart', this);
             this.element.addEventListener('touchend', this);
             this.element.addEventListener('touchmove', this);
@@ -95,9 +92,6 @@ class tinyshell {
     };
 
     removeEventListener = function (ev, callback) {
-        this.Params.listeners.forEach(listen => {
-            console.log(listen);
-        })
         this.Params.listeners.delete(this.Events[ev]);
         //remove the touch listeners if ALL callbacks are null.
         if (this.Params.listeners.size === 0) {
@@ -109,21 +103,8 @@ class tinyshell {
     };
 
     handleEvent = function (ev) {
-        console.log('handling', ev.type); //, ev.target, ev.currentTarget);
+        //console.log('handling', ev.type); 
         switch (ev.type) {
-            // case 'swipeleft':
-            // case 'swiperight':
-            // case 'revealleft':
-            // case 'revealright':
-            // case 'tap':
-            //     //swipe or tap with one finger
-            //     if (ev.detail.touches == 1) {
-            //         //this.Events[ev.type].detail.callback.call(this.element, ev);
-            //         console.log('SWIPE REVEAL OR TAP HANLDED')
-            //     } else {
-            //         console.log('Wrong number of touch points', ev.detail.touches);
-            //     }
-            //     break;
             case 'touchstart':
                 this.start(ev);
                 break;
@@ -196,9 +177,6 @@ class tinyshell {
     start = function (ev) {
         console.log('start', ev.type);
         let touches = ev.changedTouches;
-        // this.Events['tap'].detail.touches = touches.length;
-        // this.Events['swipeleft'].detail.touches = touches.length;
-        // this.Events['swiperight'].detail.touches = touches.length;
         this.Params.startX = touches[0].pageX;
         this.Params.startY = touches[0].pageY;
         performance.mark('start');
@@ -239,7 +217,6 @@ class tinyshell {
                 this.Events['swipeleft'].detail.callback !== null &&
                 typeof this.Events['swipeleft'].detail.callback === 'function') {
                 if (deltaX > this.Params.minDistance && duration < this.Params.maxSwipeTime && deltaX > deltaY) {
-                    console.log('Successful swipeleft'); //Good swipe
                     //do callback to be handled by this.handleEvent
                     ev.currentTarget.dispatchEvent(this.Events['swipeleft']);
                 } else {
@@ -254,9 +231,7 @@ class tinyshell {
             if (dir == 'right' &&
                 this.Events['swiperight'].detail.callback !== null &&
                 typeof this.Events['swiperight'].detail.callback === 'function') {
-                console.log('swiping right')
                 if (deltaX > this.Params.minDistance && duration < this.Params.maxSwipeTime && deltaX > deltaY) {
-                    console.log('Successful swiperight'); //Good swipe
                     //do callback to be handled by this.handleEvent
                     ev.currentTarget.dispatchEvent(this.Events['swiperight']);
                 } else {
@@ -307,13 +282,11 @@ class tinyshell {
                     //back to starting position
                     if (this.element.classList.contains('has-reveal-left') || this.element.classList.contains('has-reveal-both')) {
                         this.element.style.transform = `translateX(${-1 * this.Params.twenty}px)`;
-                        //console.log('back to start')
+                        //'back to start'
                     } else {
                         this.element.style.transform = `translateX(${0}px)`;
-                        //console.log('no reveal left')
+                        //'no reveal left'
                     }
-
-                    //this.element.style.transform = `translateX(${this.Params.minDrag}px)`;
                 } else if (Math.abs(deltaX) > this.Params.maxDrag) {
                     //snap to reveal position
                     if (this.element.classList.contains('has-reveal-left') || this.element.classList.contains('has-reveal-both')) {
@@ -338,10 +311,10 @@ class tinyshell {
                 //snap back to original position
                 if (this.element.classList.contains('has-reveal-left') || this.element.classList.contains('has-reveal-both')) {
                     this.element.style.transform = `translateX(${-1 * this.Params.twenty}px)`;
-                    //console.log('back to start')
+                    //'back to start'
                 } else {
                     this.element.style.transform = `translateX(${0}px)`;
-                    //console.log('no reveal left')
+                    //'no reveal left'
                 }
             }
         }
