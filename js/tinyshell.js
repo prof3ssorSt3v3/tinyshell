@@ -13,6 +13,42 @@ class tinyshell {
   constructor(elem) {
     this.element = elem;
 
+    this.performance = Object.create(null);
+    this.performance.now = window.performance.now;
+    //check for support of performance.mark and performance.measure
+    if (!this.performance.mark || !this.performance.measure) {
+      window.tinymarks = new Map();
+      window.tinymeasures = new Map();
+
+      this.performance.mark = function(_name) {
+        let t = performance.now();
+        window.tinymarks.set(_name, t);
+      };
+      this.performance.measure = function(_name, _mark1, _mark2) {
+        let m1 = window.tinymarks.get(_mark1);
+        let m2 = window.tinymarks.get(_mark2);
+        if (m1 && m2) {
+          let diff = m2 - m1;
+          window.tinymeasures.set(_name, diff);
+          return diff;
+        } else {
+          window.tinymeasures.set(_name, 0);
+          return 0;
+        }
+      };
+      this.performance.clearMarks = function(_name) {
+        window.tinymarks.delete(_name);
+      };
+      this.performance.getEntriesByName = function(_name, _type = "measure") {
+        if (_type == "measure") {
+          let ret = [{ name: _name, duration: window.tinymeasures.get(_name) }];
+          return ret;
+        } else {
+          return [{ name: _name, time: window.tinymarks.get(_name) }];
+        }
+      };
+    }
+
     this.Params = {
       startX: 0,
       startY: 0,
@@ -70,41 +106,6 @@ class tinyshell {
   }
 
   addEventListener = function(ev, callback) {
-    //check for support of performance.mark and performance.measure
-    if (!window.performance.mark || !window.performance.measure) {
-      window.tinymarks = new Map();
-      window.tinymeasures = new Map();
-      window.performance.prototype.mark = function(_name) {
-        let t = performance.now();
-        window.tinymarks.set(_name, t);
-      };
-      window.performance.prototype.measure = function(_name, _mark1, _mark2) {
-        let m1 = window.tinymarks.get(_mark1);
-        let m2 = window.tinymarks.get(_mark2);
-        if (m1 && m2) {
-          let diff = m2 - m1;
-          window.tinymeasures.set(_name, diff);
-          return diff;
-        } else {
-          window.tinymeasures.set(_name, 0);
-          return 0;
-        }
-      };
-      window.performance.prototype.clearMarks = function(_name) {
-        window.tinymarks.delete(_name);
-      };
-      window.performance.prototype.getEntriesByName = function(
-        _name,
-        _type = "measure"
-      ) {
-        if (_type == "measure") {
-          return window.tinymeasures.get(_name);
-        } else {
-          return window.tinymarks.get(_name);
-        }
-      };
-    }
-
     //set the eventtype hold the name of the callback function
     this.Events[ev].detail.callback = callback;
     if (!this.Params.listeners.has(this.Events[ev])) {
@@ -170,9 +171,9 @@ class tinyshell {
     ) {
       let touches = ev.changedTouches;
       if (touches.length == 1) {
-        performance.mark("move");
-        performance.measure("moving", "start", "move");
-        let m = performance.getEntriesByName("moving", "measure");
+        this.performance.mark("move");
+        this.performance.measure("moving", "start", "move");
+        let m = this.performance.getEntriesByName("moving", "measure");
         let duration = m[0].duration;
         let deltaX =
           Math.max(this.Params.startX, touches[0].pageX) -
@@ -227,7 +228,7 @@ class tinyshell {
           //console.log('move', move);
           this.element.style.transform = `translateX(${move}px)`;
         }
-        performance.clearMarks("move");
+        this.performance.clearMarks("move");
       }
     }
   };
@@ -237,7 +238,7 @@ class tinyshell {
     let touches = ev.changedTouches;
     this.Params.startX = touches[0].pageX;
     this.Params.startY = touches[0].pageY;
-    performance.mark("start");
+    this.performance.mark("start");
   };
 
   end = function(ev) {
@@ -245,9 +246,9 @@ class tinyshell {
     let touches = ev.changedTouches;
     //Must be changedTouches as ev.touches.length would be zero
     if (touches.length == 1) {
-      performance.mark("end");
-      performance.measure("touching", "start", "end");
-      let m = performance.getEntriesByName("touching", "measure");
+      this.performance.mark("end");
+      this.performance.measure("touching", "start", "end");
+      let m = this.performance.getEntriesByName("touching", "measure");
       let duration = m[0].duration;
       let deltaX =
         Math.max(this.Params.startX, touches[0].pageX) -
@@ -276,9 +277,9 @@ class tinyshell {
           ev.currentTarget.dispatchEvent(this.Events["tap"]);
           //stop here and don't bother with the swipes
           //since the minDistance was not reached
-          performance.clearMarks("start");
-          performance.clearMarks("move");
-          performance.clearMarks("end");
+          this.performance.clearMarks("start");
+          this.performance.clearMarks("move");
+          this.performance.clearMarks("end");
           return;
         }
       }
@@ -298,9 +299,9 @@ class tinyshell {
         } else {
           console.log("Invalid swipeleft", deltaX, duration); //invalid swipe
         }
-        performance.clearMarks("start");
-        performance.clearMarks("move");
-        performance.clearMarks("end");
+        this.performance.clearMarks("start");
+        this.performance.clearMarks("move");
+        this.performance.clearMarks("end");
         return;
       }
       //for swiperight
@@ -319,9 +320,9 @@ class tinyshell {
         } else {
           console.log("Invalid swiperight", deltaX, duration); //invalid swipe
         }
-        performance.clearMarks("start");
-        performance.clearMarks("move");
-        performance.clearMarks("end");
+        this.performance.clearMarks("start");
+        this.performance.clearMarks("move");
+        this.performance.clearMarks("end");
         return;
       }
       //for revealleft
@@ -368,9 +369,9 @@ class tinyshell {
           }
         }
         ev.currentTarget.dispatchEvent(this.Events["revealleft"]);
-        performance.clearMarks("start");
-        performance.clearMarks("move");
-        performance.clearMarks("end");
+        this.performance.clearMarks("start");
+        this.performance.clearMarks("move");
+        this.performance.clearMarks("end");
       }
       //for revealright
       if (this.Events["revealright"].detail.callback && dir == "right") {
@@ -411,9 +412,9 @@ class tinyshell {
           }
         }
         ev.currentTarget.dispatchEvent(this.Events["revealright"]);
-        performance.clearMarks("start");
-        performance.clearMarks("move");
-        performance.clearMarks("end");
+        this.performance.clearMarks("start");
+        this.performance.clearMarks("move");
+        this.performance.clearMarks("end");
       }
       if (
         deltaX < this.Params.minDrag &&
