@@ -6,7 +6,7 @@
  * Released under MIT license
  * Limited Use scenario - this is intended to be used in mobile devices
  * in combination with the Cordova Framework only
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 class tinyshell {
