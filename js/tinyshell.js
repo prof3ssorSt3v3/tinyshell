@@ -67,6 +67,37 @@ class tinyshell {
                 }
             })
         }
+
+        //check for support of performance.mark and performance.measure
+        if (!'mark' in performance || !'measure' in performance) {
+            window.tinymarks = new Map();
+            window.tinymeasures = new Map();
+            performance.prototype.mark = function (_name) {
+                let t = performance.now();
+                window.tinymarks.set(_name, t);
+            }
+            performance.prototype.measure = function (_name, _mark1, _mark2) {
+                let m1 = window.tinymarks.get(_mark1);
+                let m2 = window.tinymarks.get(_mark2);
+                if (m1 && m2) {
+                    let diff = m2 - m1;
+                    window.tinymeasures.set(_name, diff);
+                } else {
+                    window.tinymeasures.set(_name, 0);
+                    return 0;
+                }
+            }
+            performance.prototype.clearMarks = function (_name) {
+                window.tinymarks.delete(_name);
+            }
+            performance.prototype.getEntriesByName = function (_name, _type = 'measure') {
+                if (_type == 'measure') {
+                    return window.tinymeasures.get(_name);
+                } else {
+                    return window.tinymarks.get(_name);
+                }
+            }
+        }
     }
 
     addEventListener = function (ev, callback) {
