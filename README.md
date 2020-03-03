@@ -2,7 +2,7 @@
 
 ## CSS and JS framework for Cordova Apps
 
-**Last Update: Tuesday March 25, 2019**
+**Last Update: Tuesday March 3, 2020**
 
 ### version: 1.0.1
 

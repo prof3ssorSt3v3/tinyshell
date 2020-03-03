@@ -1,6 +1,6 @@
 {
   "name": "tinyshell",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tiny framework with swipe and tap events for building mobile hybrid apps in Cordova",
   "private": true,
   "scripts": {
