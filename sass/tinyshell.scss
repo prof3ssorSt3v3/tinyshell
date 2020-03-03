@@ -392,25 +392,16 @@ object.fluid {
 
 .bar .left,
 .bar-half .left {
-    // float: right;
     order: 1;
 }
 
 .ios .bar-half .link.right {
-    // float: none;    
-    // position:absolute;
-    // right: 1rem;
-    // top: 0;
     padding: 0.1rem;
     line-height: 1.5rem;
     text-align: right;
 }
 
 .ios .bar-half .link.left {
-    // float: none;
-    // position: absolute;
-    // left: 1rem;
-    // top:0;
     padding: 0.1rem;
     line-height: 1.5rem;
     text-align: left;
@@ -827,6 +818,7 @@ input[type="email"] {
     font-weight: 300;
     max-width: 90vw;
     width: 90vw;
+    /* default to the Android appearance? */
 }
 
 select {
